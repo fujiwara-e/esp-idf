@@ -6,6 +6,8 @@
  * See README for more details.
  */
 #ifdef ESP_SUPPLICANT
+// debug: 12/12
+//#define DEBUG_PRINT 1
 #include "utils/includes.h"
 #include "utils/common.h"
 #include "utils/wpa_debug.h"

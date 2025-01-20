@@ -6,6 +6,8 @@
  * This software may be distributed under the terms of the BSD license.
  * See README for more details.
  */
+//debug: 12/21
+// #define DEBUG_PRINT 1
 
 #include "utils/includes.h"
 #include <fcntl.h>
@@ -20,7 +22,7 @@
 #include "crypto/aes_siv.h"
 #include "crypto/sha256.h"
 #include "dpp.h"
-
+#include "utils/wpa_debug.h"
 static const char * dpp_netrole_str(enum dpp_netrole netrole);
 
 #ifdef CONFIG_TESTING_OPTIONS
@@ -3414,6 +3416,8 @@ fail:
 int dpp_auth_conf_rx(struct dpp_authentication *auth, const u8 *hdr,
 		     const u8 *attr_start, size_t attr_len)
 {
+
+	wpa_printf(MSG_DEBUG, "Called dpp_auth_conf_rx\n");
 	const u8 *r_bootstrap, *i_bootstrap, *wrapped_data, *status, *i_auth;
 	u16 r_bootstrap_len, i_bootstrap_len, wrapped_data_len, status_len,
 		i_auth_len;

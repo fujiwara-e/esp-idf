@@ -338,6 +338,8 @@ int wpa_gen_rsnxe(struct wpa_sm *sm, u8 *rsnxe, size_t rsnxe_len)
 static int  wpa_parse_generic(const u8 *pos, const u8 *end,
 			     struct wpa_eapol_ie_parse *ie)
 {
+    //debug 12/12
+    printf("called wpa_parse_generic\n");
 	if (pos[1] == 0)
 		return 1;
 

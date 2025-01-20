@@ -15,7 +15,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+//debug 2024/12/16
 #define ESP_DPP_AUTH_TIMEOUT_SECS 1
 
 #define ESP_ERR_DPP_FAILURE         (ESP_ERR_WIFI_BASE + 151)   /*!< Generic failure during DPP Operation */

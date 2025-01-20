@@ -45,11 +45,13 @@ esp_err_t esp_dpp_post_evt(uint32_t evt_id, uint32_t data)
     esp_err_t ret = ESP_OK;
 
     if (evt == NULL) {
+        printf("evt = NULL");
         ret = ESP_ERR_NO_MEM;
         goto end;
     }
     evt->id = evt_id;
     evt->data = data;
+    printf("evt_id= %u\n",evt_id);
     if (s_dpp_api_lock) {
         DPP_API_LOCK();
     } else {
@@ -88,6 +90,7 @@ static uint8_t esp_dpp_deinit_auth(void)
 static void esp_dpp_call_cb(esp_supp_dpp_event_t evt, void *data)
 {
     if (evt == ESP_SUPP_DPP_FAIL && s_dpp_ctx.dpp_auth) {
+        wpa_printf(MSG_DEBUG, "called esp_dpp_call_cb\n");
         esp_dpp_deinit_auth();
     }
     s_dpp_ctx.dpp_event_cb(evt, data);
@@ -95,10 +98,11 @@ static void esp_dpp_call_cb(esp_supp_dpp_event_t evt, void *data)
 
 static void esp_dpp_auth_conf_wait_timeout(void *eloop_ctx, void *timeout_ctx)
 {
+    wpa_printf(MSG_DEBUG, "called esp_dpp_auth_conf_wait_timeout\n");
     if (!s_dpp_ctx.dpp_auth || !s_dpp_ctx.dpp_auth->waiting_auth_conf) {
         return;
     }
-
+    printf("DPP: Terminate authentication exchange due to Auth Confirm timeout");
     wpa_printf(MSG_DEBUG,
                "DPP: Terminate authentication exchange due to Auth Confirm timeout");
     esp_dpp_call_cb(ESP_SUPP_DPP_FAIL, (void *)ESP_ERR_DPP_AUTH_TIMEOUT);
@@ -107,6 +111,7 @@ static void esp_dpp_auth_conf_wait_timeout(void *eloop_ctx, void *timeout_ctx)
 esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint32_t len,
                                     uint8_t channel, uint32_t wait_time_ms)
 {
+    wpa_printf(MSG_DEBUG, "Called esp_dpp_send_action_frame\n");
     wifi_action_tx_req_t *req = os_zalloc(sizeof(*req) + len);;
     if (!req) {
         return ESP_FAIL;
@@ -119,8 +124,11 @@ esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint3
     req->rx_cb = s_action_rx_cb;
     memcpy(req->data, buf, req->data_len);
 
-    wpa_printf(MSG_DEBUG, "DPP: Mgmt Tx - MAC:" MACSTR ", Channel-%d, WaitT-%d",
+    printf("DPP: Mgmt Tx - MAC:" MACSTR ", Channel-%d, WaitT-%d",
                MAC2STR(dest_mac), channel, wait_time_ms);
+
+    //wpa_printf(MSG_DEBUG, "DPP: Mgmt Tx - MAC:" MACSTR ", Channel-%d, WaitT-%d",
+    //           MAC2STR(dest_mac), channel, wait_time_ms);
 
     if (ESP_OK != esp_wifi_action_tx_req(WIFI_OFFCHAN_TX_REQ, channel,
                                          wait_time_ms, req)) {
@@ -136,6 +144,7 @@ esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint3
 
 static void esp_dpp_rx_auth_req(struct action_rx_param *rx_param, uint8_t *dpp_data)
 {
+    printf("called esp_dpp_rx_auth_req\n");
     size_t len = rx_param->vendor_data_len - 2;
     const u8 *r_bootstrap, *i_bootstrap;
     u16 r_bootstrap_len, i_bootstrap_len;
@@ -258,12 +267,15 @@ static void esp_dpp_rx_auth_conf(struct action_rx_param *rx_param, uint8_t *dpp_
                MAC2STR(rx_param->sa));
 
     if (!auth) {
-        wpa_printf(MSG_DEBUG, "DPP: No DPP Authentication in progress - drop");
+        printf("DPP: No DPP Authentication in progress - drop");
+        wpa_printf(MSG_MSGDUMP, "DPP: No DPP Authentication in progress - drop");
         rc = ESP_ERR_DPP_FAILURE;
         goto fail;
     }
 
     if (os_memcmp(rx_param->sa, auth->peer_mac_addr, ETH_ALEN) != 0) {
+        printf("DPP: MAC address mismatch (expected "
+                   MACSTR ") - drop", MAC2STR(auth->peer_mac_addr));
         wpa_printf(MSG_DEBUG, "DPP: MAC address mismatch (expected "
                    MACSTR ") - drop", MAC2STR(auth->peer_mac_addr));
         rc = ESP_ERR_DPP_FAILURE;
@@ -272,6 +284,7 @@ static void esp_dpp_rx_auth_conf(struct action_rx_param *rx_param, uint8_t *dpp_
 
     eloop_cancel_timeout(esp_dpp_auth_conf_wait_timeout, NULL, NULL);
 
+    printf("esp_dpp.c: Called dpp_auth_conf_rx\n");
     if (dpp_auth_conf_rx(auth, (const u8 *)&public_action->v,
                          dpp_data, len) < 0) {
         wpa_printf(MSG_DEBUG, "DPP: Authentication failed");
@@ -410,6 +423,8 @@ fail:
 
 static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
 {
+    //debug 12/13
+    printf("called esp_dpp_rx_frm()\n");
     uint8_t crypto_suit, type;
     uint8_t *tmp;
     int ret = ESP_OK;
@@ -417,12 +432,13 @@ static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
     tmp = rx_param->action_frm->u.public_action.v.pa_vendor_spec.vendor_data;
     crypto_suit = tmp[0];
     type = tmp[1];
-
+    printf("hi\n");
     if (crypto_suit != 1) {
         wpa_printf(MSG_ERROR, "DPP: Unsupported crypto suit");
         esp_dpp_call_cb(ESP_SUPP_DPP_FAIL, (void *)ESP_ERR_NOT_SUPPORTED);
         ret = ESP_FAIL;
     } else {
+        printf("type = %d\n", type);
         switch (type) {
         case DPP_PA_AUTHENTICATION_REQ:
             esp_dpp_rx_auth_req(rx_param, &tmp[2]);
@@ -435,7 +451,7 @@ static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
             break;
         }
     }
-
+    printf("ret = %d\n",ret);
     return ret;
 }
 
@@ -491,9 +507,10 @@ static esp_err_t esp_dpp_rx_action(struct action_rx_param *rx_param)
                                                  (u8 *)rx_param->action_frm);
 
             if (s_dpp_listen_in_progress) {
+                printf("dpp listen is inprogress\n");
                 esp_supp_dpp_stop_listen();
             }
-
+            printf("dpp listen is end\n");
             ret = esp_dpp_rx_frm(rx_param);
         } else if (public_action->action == WLAN_PA_GAS_INITIAL_RESP &&
                    public_action->v.pa_gas_resp.type == WLAN_EID_ADV_PROTO &&
@@ -521,6 +538,9 @@ static void esp_dpp_task(void *pvParameters)
 
     for (;;) {
         if (os_queue_recv(s_dpp_evt_queue, &evt, OS_BLOCK) == TRUE) {
+            //debug: 12/13
+            printf("Event ID: %d\n",evt->id);
+
             if (evt->id >= SIG_DPP_MAX) {
                 os_free(evt);
                 continue;
@@ -624,6 +644,7 @@ static void esp_dpp_task(void *pvParameters)
 
 int esp_supp_rx_action(uint8_t *hdr, uint8_t *payload, size_t len, uint8_t channel)
 {
+    printf("called esp_supp_rx_action\n");
     struct ieee80211_hdr *rx_hdr = (struct ieee80211_hdr *)hdr;
     struct action_rx_param *rx_param;
     int ret = ESP_ERR_NOT_SUPPORTED;
@@ -671,6 +692,7 @@ static void offchan_event_handler(void *arg, esp_event_base_t event_base,
             if (s_dpp_listen_in_progress) {
                 esp_supp_dpp_stop_listen();
             }
+            wpa_printf(MSG_DEBUG, "Error\n");
             esp_dpp_call_cb(ESP_SUPP_DPP_FAIL, (void *)ESP_ERR_DPP_TX_FAILURE);
         }
 

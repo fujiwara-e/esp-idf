@@ -1,0 +1,991 @@
+Executing action: monitor
+Serial port /dev/ttyUSB1
+Connecting....
+Detecting chip type... ESP32-S3
+Running idf_monitor in directory /home/fujiwara-e/fujiwara-e/esp/esp-idf/work_space/dpp-enrollee
+Executing "/home/fujiwara-e/.espressif/python_env/idf5.3_py3.10_env/bin/python /home/fujiwara-e/fujiwara-e/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB1 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 /home/fujiwara-e/fujiwara-e/esp/esp-idf/work_space/dpp-enrollee/build/dpp-enrollee.elf -m '/home/fujiwara-e/.espressif/python_env/idf5.3_py3.10_env/bin/python' '/home/fujiwara-e/fujiwara-e/esp/esp-idf/tools/idf.py'"...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x178c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xcb8
+load:0x403cb700,len:0x2d9c
+entry 0x403c8914
+[0;32mI (27) boot: ESP-IDF v5.3-beta2-dirty 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Dec 12 2024 11:25:27[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (31) boot: chip revision: v0.2[0m
+[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (44) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (49) boot: Enabling RNG early entropy source...[0m
+[0;32mI (54) boot: Partition Table:[0m
+[0;32mI (58) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (73) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (80) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (88) boot: End of partition table[0m
+[0;32mI (92) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=33ae0h (211680) map[0m
+[0;32mI (138) esp_image: segment 1: paddr=00043b08 vaddr=3fc99100 size=0490ch ( 18700) load[0m
+[0;32mI (142) esp_image: segment 2: paddr=0004841c vaddr=40374000 size=07bfch ( 31740) load[0m
+[0;32mI (151) esp_image: segment 3: paddr=00050020 vaddr=42000020 size=9fcf8h (654584) map[0m
+[0;32mI (270) esp_image: segment 4: paddr=000efd20 vaddr=4037bbfc size=0d4b8h ( 54456) load[0m
+[0;32mI (291) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (291) boot: Disabling RNG early entropy source...[0m
+[0;32mI (302) cpu_start: Multicore app[0m
+D (303) cpu_start: Pro cpu up[0m
+D (303) cpu_start: Starting app cpu, entry point is 0x40375340[0m
+D (0) cpu_start: App cpu up[0m
+D (312) clk: RTC_SLOW_CLK calibration value: 3517235[0m
+D (324) cpu_start: calling init function: 0x420032c8 on core: 0[0m
+D (324) cpu_start: calling init function: 0x42003770 on core: 0[0m
+[0;32mI (324) cpu_start: Pro cpu start user code[0m
+[0;32mI (329) cpu_start: cpu freq: 160000000 Hz[0m
+D (334) cpu_start: calling init function: 0x420031f8 on core: 0[0m
+[0;32mI (340) app_init: Application information:[0m
+[0;32mI (345) app_init: Project name:     dpp-enrollee[0m
+[0;32mI (350) app_init: App version:      v5.3-beta2-dirty[0m
+[0;32mI (356) app_init: Compile time:     Dec 16 2024 14:02:46[0m
+[0;32mI (362) app_init: ELF file SHA256:  9f0e42807...[0m
+[0;32mI (367) app_init: ESP-IDF:          v5.3-beta2-dirty[0m
+D (372) cpu_start: calling init function: 0x420032dc on core: 0[0m
+[0;32mI (378) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (383) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (388) efuse_init: Chip rev:         v0.2[0m
+D (393) cpu_start: calling init function: 0x42005374 on core: 0[0m
+D (399) memory_layout: Checking 6 reserved memory ranges:[0m
+D (404) memory_layout: Reserved memory range 0x3fc84000 - 0x3fc99100[0m
+D (411) memory_layout: Reserved memory range 0x3fc99100 - 0x3fca1938[0m
+D (417) memory_layout: Reserved memory range 0x3fceee34 - 0x3fcf0000[0m
+D (424) memory_layout: Reserved memory range 0x40374000 - 0x40389100[0m
+D (430) memory_layout: Reserved memory range 0x600fe000 - 0x600fe100[0m
+D (437) memory_layout: Reserved memory range 0x600fffe8 - 0x60100000[0m
+D (443) memory_layout: Building list of available memory regions:[0m
+D (449) memory_layout: Available memory region 0x3fca1938 - 0x3fcb0000[0m
+D (456) memory_layout: Available memory region 0x3fcb0000 - 0x3fcc0000[0m
+D (462) memory_layout: Available memory region 0x3fcc0000 - 0x3fcd0000[0m
+D (469) memory_layout: Available memory region 0x3fcd0000 - 0x3fce0000[0m
+D (476) memory_layout: Available memory region 0x3fce0000 - 0x3fce9710[0m
+D (482) memory_layout: Available memory region 0x3fce9710 - 0x3fceee34[0m
+D (489) memory_layout: Available memory region 0x3fcf0000 - 0x3fcf8000[0m
+D (495) memory_layout: Available memory region 0x600fe100 - 0x600fffe8[0m
+[0;32mI (502) heap_init: Initializing. RAM available for dynamic allocation:[0m
+D (509) heap_init: New heap initialised at 0x3fca1938[0m
+[0;32mI (514) heap_init: At 3FCA1938 len 00047DD8 (287 KiB): RAM[0m
+[0;32mI (520) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+D (526) heap_init: New heap initialised at 0x3fcf0000[0m
+[0;32mI (532) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+D (538) heap_init: New heap initialised at 0x600fe100[0m
+[0;32mI (543) heap_init: At 600FE100 len 00001EE8 (7 KiB): RTCRAM[0m
+D (549) cpu_start: calling init function: 0x42008858 on core: 0[0m
+D (555) cpu_start: calling init function: 0x42008200 on core: 0[0m
+D (561) cpu_start: calling init function: 0x420037bc on core: 0[0m
+D (567) intr_alloc: Connected src 39 to int 1 (cpu 0)[0m
+D (572) cpu_start: calling init function: 0x420037c8 on core: 0[0m
+D (578) cpu_start: calling init function: 0x420099a4 on core: 0[0m
+D (584) cpu_start: calling init function: 0x4200a6a4 on core: 0[0m
+D (590) cpu_start: calling init function: 0x4200a8d4 on core: 0[0m
+D (596) cpu_start: calling init function: 0x4200827c on core: 0[0m
+D (602) cpu_start: calling init function: 0x42008648 on core: 0[0m
+D (608) cpu_start: calling init function: 0x420037d4 on core: 0[0m
+D (614) spi_flash: trying chip: issi[0m
+D (618) spi_flash: trying chip: gd[0m
+[0;32mI (621) spi_flash: detected chip: gd[0m
+[0;32mI (626) spi_flash: flash io: dio[0m
+[0;33mW (629) spi_flash: Detected size(8192k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+D (643) cpu_start: calling init function: 0x42003378 on core: 0[0m
+D (648) cpu_start: calling init function: 0x4207b728[0m
+D (654) cpu_start: calling init function: 0x42031d24[0m
+D (659) cpu_start: calling init function: 0x4037bd1c[0m
+D (664) cpu_start: calling init function: 0x42004b50[0m
+D (669) cpu_start: calling init function: 0x42003d64[0m
+D (674) cpu_start: calling init function: 0x42067144 on core: 0[0m
+D (680) intr_alloc: Connected src 59 to int 2 (cpu 0)[0m
+D (685) cpu_start: calling init function: 0x420061bc on core: 0[0m
+[0;32mI (691) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (698) sleep: Enable automatic switching of GPIO sleep configuration[0m
+D (705) cpu_start: calling init function: 0x420037fc on core: 0[0m
+D (711) cpu_start: calling init function: 0x4200a2b4 on core: 0[0m
+D (717) cpu_start: calling init function: 0x42003808 on core: 0[0m
+D (723) intr_alloc: Connected src 79 to int 3 (cpu 0)[0m
+D (728) app_start: Starting scheduler on CPU0[0m
+D (732) intr_alloc: Connected src 57 to int 5 (cpu 0)[0m
+D (732) intr_alloc: Connected src 80 to int 0 (cpu 1)[0m
+D (742) app_start: Starting scheduler on CPU1[0m
+D (742) intr_alloc: Connected src 58 to int 1 (cpu 1)[0m
+[0;32mI (732) main_task: Started on CPU0[0m
+D (752) heap_init: New heap initialised at 0x3fce9710[0m
+D (752) intr_alloc: Connected src 52 to int 8 (cpu 0)[0m
+[0;32mI (762) main_task: Calling app_main()[0m
+D (782) esp_netif_lwip: LwIP stack has been initialized[0m
+D (782) esp_netif_lwip: esp-netif has been successfully initialized[0m
+D (782) event: running task for loop 0x3fca835c[0m
+D (792) event: created task for loop 0x3fca835c[0m
+D (792) event: created event loop 0x3fca835c[0m
+D (802) esp_netif_lwip: check: remote, if=0x3fca54b0 fn=0x420138a4[0m
+D (802) esp_netif_objects: esp_netif_add_to_list_unsafe netif added successfully (total netifs: 1)[0m
+D (812) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+[0;32mI (822) pp: pp rom version: e7ae62f[0m
+[0;32mI (822) net80211: net80211 rom version: e7ae62f[0m
+D (832) nvs: nvs_open_from_partition misc 1[0m
+I (842) wifi:wifi driver task: 3fcabca4, prio:23, stack:6656, core=0
+D (842) efuse: In EFUSE_BLK1__DATA1_REG is used 8 bits starting with 8 bit[0m
+D (842) efuse: In EFUSE_BLK1__DATA1_REG is used 8 bits starting with 0 bit[0m
+D (852) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 24 bit[0m
+D (862) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 16 bit[0m
+D (862) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 8 bit[0m
+D (872) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 0 bit[0m
+D (882) nvs: nvs_open_from_partition nvs.net80211 1[0m
+D (882) nvs: nvs_get opmode 1[0m
+D (892) nvs: nvs_get_str_or_blob sta.ssid[0m
+D (892) nvs: nvs_get sta.authmode 1[0m
+D (892) nvs: nvs_get_str_or_blob sta.pswd[0m
+D (902) nvs: nvs_get_str_or_blob sta.pmk[0m
+D (902) nvs: nvs_get sta.chan 1[0m
+D (902) nvs: nvs_get auto.conn 1[0m
+D (912) nvs: nvs_get bssid.set 1[0m
+D (912) nvs: nvs_get_str_or_blob sta.bssid[0m
+D (922) nvs: nvs_get sta.lis_intval 2[0m
+D (922) nvs: nvs_get sta.phym 1[0m
+D (922) nvs: nvs_get sta.phybw 1[0m
+D (932) nvs: nvs_get_str_or_blob sta.apsw[0m
+D (932) nvs: nvs_get_str_or_blob sta.apinfo[0m
+D (942) nvs: nvs_get sta.scan_method 1[0m
+D (942) nvs: nvs_get sta.sort_method 1[0m
+D (942) nvs: nvs_get sta.minrssi 1[0m
+D (942) nvs: nvs_get sta.minauth 1[0m
+D (952) nvs: nvs_get sta.pmf_e 1[0m
+D (952) nvs: nvs_get sta.pmf_r 1[0m
+D (962) nvs: nvs_get sta.btm_e 1[0m
+D (962) nvs: nvs_get sta.rrm_e 1[0m
+D (962) nvs: nvs_get sta.mbo_e 1[0m
+D (962) nvs: nvs_get_str_or_blob ap.ssid[0m
+D (972) nvs: nvs_get_str_or_blob ap.passwd[0m
+D (972) nvs: nvs_get_str_or_blob ap.pmk[0m
+D (982) nvs: nvs_get ap.chan 1[0m
+D (982) nvs: nvs_get ap.authmode 1[0m
+D (982) nvs: nvs_get ap.hidden 1[0m
+D (992) nvs: nvs_get ap.max.conn 1[0m
+D (992) nvs: nvs_get bcn.interval 2[0m
+D (992) nvs: nvs_get ap.phym 1[0m
+D (1002) nvs: nvs_get ap.phybw 1[0m
+D (1002) nvs: nvs_get ap.sndchan 1[0m
+D (1002) nvs: nvs_get ap.pmf_e 1[0m
+D (1012) nvs: nvs_get ap.pmf_r 1[0m
+D (1012) nvs: nvs_get ap.p_cipher 1[0m
+D (1012) nvs: nvs_get lorate 1[0m
+D (1022) nvs: nvs_get_str_or_blob country[0m
+D (1022) nvs: nvs_get ap.ftm_r 1[0m
+D (1022) nvs: nvs_get sta.ft 1[0m
+D (1032) nvs: nvs_get sta.owe 1[0m
+D (1032) nvs: nvs_get sta.trans_d 1[0m
+D (1032) nvs: nvs_get sta.sae_h2e 1[0m
+D (1042) nvs: nvs_get sta.sae_pk_mode 1[0m
+D (1042) nvs: nvs_get sta.bss_retry 1[0m
+D (1052) nvs: nvs_get_str_or_blob sta.owe_data[0m
+D (1052) nvs: nvs_get sta.he_dcm 1[0m
+D (1052) nvs: nvs_get sta.he_dcm_c_tx 1[0m
+D (1062) nvs: nvs_get sta.he_dcm_c_rx 1[0m
+D (1062) nvs: nvs_get sta.he_mcs9_d 1[0m
+D (1062) nvs: nvs_get sta.he_su_b_d 1[0m
+D (1072) nvs: nvs_get sta.he_su_b_f_d 1[0m
+D (1072) nvs: nvs_get sta.he_mu_b_f_d 1[0m
+D (1082) nvs: nvs_get sta.he_cqi_f_d 1[0m
+D (1082) nvs: nvs_get_str_or_blob sta.sae_h2e_id[0m
+D (1092) nvs: nvs_get ap.sae_h2e 1[0m
+D (1092) nvs: nvs_get_str_or_blob ap.pmk_info[0m
+D (1092) nvs: nvs_get nan.phym 1[0m
+D (1102) nvs: nvs_get band 1[0m
+D (1102) nvs: nvs_set ap.sndchan 1 1[0m
+I (1102) wifi:wifi firmware version: 0ae8b58
+I (1112) wifi:wifi certification version: v7.0
+I (1112) wifi:config NVS flash: enabled
+I (1112) wifi:config nano formating: disabled
+I (1122) wifi:Init data frame dynamic rx buffer num: 32
+I (1122) wifi:Init static rx mgmt buffer num: 5
+I (1132) wifi:Init management short buffer num: 32
+I (1132) wifi:Init dynamic tx buffer num: 32
+I (1142) wifi:Init static tx FG buffer num: 2
+I (1142) wifi:Init static rx buffer size: 1600
+I (1142) wifi:Init static rx buffer num: 10
+I (1152) wifi:Init dynamic rx buffer num: 32
+D (1152) wifi:Reset scan defaults in ms : min,max,passive,chan_dwell :(0,120,360,30)
+D (1162) wpa: ELOOP: wpas_rrm_reset:51 called to remove timer handler=0x4201e93c, removed count=0[0m
+D (1172) wpa: ELOOP: wpas_clear_beacon_rep_data:1166 called to remove timer handler=0x4201f3dc, removed count=0[0m
+D (1182) wpa: ELOOP: wpas_clear_beacon_rep_data:1166 called to remove timer handler=0x4201f3dc, removed count=0[0m
+[0;32mI (1192) wifi_init: rx ba win: 6[0m
+[0;32mI (1192) wifi_init: accept mbox: 6[0m
+[0;32mI (1202) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1202) wifi_init: udp mbox: 6[0m
+[0;32mI (1212) wifi_init: tcp mbox: 6[0m
+[0;32mI (1212) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1212) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1222) wifi_init: tcp mss: 1440[0m
+[0;32mI (1222) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1232) wifi_init: WiFi RX IRAM OP enabled[0m
+D (1232) nvs: nvs_get opmode 1[0m
+[0;32mI (1232) wpa: esp_dpp_task prio:2, stack:6656[0m
+evt_id= 1
+Event ID: 1
+D (1242) wpa: private key - hexdump(len=51):[0m
+D (1252) wpa: 30 31 02 01 01 04 20 54 ce 18 1a 98 52 5f 21 72 [0m
+D (1252) wpa: 16 f5 9b 24 5f 60 e9 df 30 ac 7f 6b 26 c9 39 41 [0m
+D (1262) wpa: 8c fc 3c 42 d1 af a1 a0 0a 06 08 2a 86 48 ce 3d [0m
+D (1262) wpa: 03 01 07 [0m
+D (1322) wpa: DPP: Compressed public key (DER) - hexdump(len=59):[0m
+D (1322) wpa: 30 39 30 13 06 07 2a 86 48 ce 3d 02 01 06 08 2a [0m
+D (1322) wpa: 86 48 ce 3d 03 01 07 03 22 00 02 53 18 a3 e3 ba [0m
+D (1332) wpa: e0 98 64 15 20 fd da 32 6c 87 64 9f c3 6b 19 72 [0m
+D (1332) wpa: 17 ed a5 8b 9b 4e a1 f6 2c c2 71 [0m
+D (1342) gdma: new group (0) at 0x3fcb632c[0m
+D (1342) gdma: new pair (0,0) at 0x3fcb6038[0m
+D (1352) gdma: new tx channel (0,0) at 0x3fcb6188[0m
+D (1352) gdma: new rx channel (0,0) at 0x3fcb63b4[0m
+D (1352) gdma: tx channel (0,0), (1:16) bytes aligned, burst enabled[0m
+D (1362) gdma: rx channel (0,0), (1:16) bytes aligned, burst disabled[0m
+D (1372) wpa: DPP: Public key hash - hexdump(len=32):[0m
+D (1372) wpa: 52 44 bf cb 85 e9 66 78 80 15 2f 43 9c 61 08 69 [0m
+D (1382) wpa: 94 9a 1c a2 e7 be 6f 4e 3d 9f f1 5f 24 b1 05 6f [0m
+D (1382) wpa: DPP: URI mac: 48:27:e2:84:59:18[0m
+[0;32mI (1392) wifi dpp-enrollee: Scan below QR Code to configure the enrollee:
+[0m
+[0;32mI (1402) QRCODE: Encoding below text with ECC LVL 0 & QR Code Version 10[0m
+[0;32mI (1402) QRCODE: DPP:C:81/6;M:48:27:e2:84:59:18;K:MDkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDIgACUxij47rgmGQVIP3aMmyHZJ/DaxlyF+2li5tOofYswnE=;;[0m
+                                              
+  █▀▀▀▀▀█ ▀▄▀▄█ ▀  ▄▀█▄▄▄  ▄  ▀  ▄▀ █▀▀▀▀▀█   
+  █ ███ █  █▄██  ▄▀▀▀▀▄█  ▄█ ▄█▄  █ █ ███ █   
+  █ ▀▀▀ █  ▄▄█▀█▀▀ ▀█ ██ ▄    █ █ ▄ █ ▀▀▀ █   
+  ▀▀▀▀▀▀▀ █ █ ▀▄█ ▀ ▀ █ █▄▀▄▀ ▀ █▄█ ▀▀▀▀▀▀▀   
+  ▀▀▄▀█▄▀▄ ▀▄▄▄  █  ▄▄█▀ ▀▀▄ ▄▄█▄██▄▀ ▄ ▄▄▀   
+  ██   ▄▀▄▄ ▄█  █▀██▀▄▀ █▀  █▀██ ▄▀▄█▀▄ ▀▄▄   
+   █ ▀█ ▀█▄▄█▀▀█▀ █▀▀ ▄█▄▀▀▀▄▄▄  ▀▀ ▀█▄▄ ▄▀   
+  ▄█▄▀  ▀▀ ▀ █▀▀▄▄▀ ▀██▀▀ ▀▀▄▀▄  ███ █▄█▄ █   
+   ▀▄▄▀█▀▄▄ ▄ ▀▄   ▀ ████▀ ▀███ ▀▄  ▄▄▄ ▄█▄   
+  ▀  ▀██▀▀█ █▀▄ ▄█▀▄▄▀█▀██▄▄▄▀▄▀▀▀█▄█▄ ▀▄▄█   
+  █ ▀█▄█▀ ▄▄█▀▄▀█ ▄ ▄▄█▄ █ ▄▄█▀ ▄▄█▄█▄▄▀ ██   
+  █ ▀▀  ▀█▀█▀█▄  ▀██▀ ▄▀▄█ ▀█▀ ▄█ ▀▄██▄█▀ ▄   
+  ▀▀▀█▄▄▀▄███▀▀█▄▀▄▀   ▀ █▀▀▄█ ▄▀▀▄██▀▄█▄ ▀   
+  ▀█▀█ █▀█▀▀▀ ▀▀ █  ▀▀█ ▀ ▀  ██ █▀▄██▀█ █▄█   
+  ▄▀▄▀▀▄▀ ████▀ █  ▀▀█ ▄▀▀▄██  ▀ ▀▄▄▄ ▄▀▄▀▄   
+  ██▄▀▄▀▀▄▀█ ▄▀█▀▄█▀▀█  █▀▄▄▀█▄ ██▄▀▄▄▄█▄▄█   
+  ▀▀▀ ▀ ▀▀█▄▀▀▀█▀▄▀▄▄▀  ▄▀▀  ▄▄█▀▄█▀▀▀█ ▀▀█   
+  █▀▀▀▀▀█  ▀▀▀▄█ ██ ▄▄▀ ▀█ ▀▀▀ ▄█▀█ ▀ █  ▄    
+  █ ███ █ █ ▀▀▄█▄  █▄▄▀▄ ▄▀ ▄█▀█▄██▀▀█▀ ▄▄█   
+  █ ▀▀▀ █ ▄█  ▄▀ ▀▄ ▀█    ▀ ▄██ █ ▄▄▄ █▀▄ █   
+  ▀▀▀▀▀▀▀ ▀▀▀▀▀▀ ▀ ▀ ▀ ▀▀ ▀   ▀ ▀▀▀▀▀▀ ▀      
+                                              
+
+D (1712) wpa: DPP: Sent event 1 to DPP task[0m
+[0;32mI (1722) phy_init: phy_version 670,b7bc9b9,Apr 30 2024,10:54:13[0m
+D (1732) phy_init: loading PHY init data from application binary[0m
+D (1732) nvs: nvs_open_from_partition phy 0[0m
+D (1742) nvs: nvs_get cal_version 4[0m
+D (1742) nvs: nvs_get_str_or_blob cal_mac[0m
+D (1742) efuse: In EFUSE_BLK1__DATA1_REG is used 8 bits starting with 8 bit[0m
+D (1752) efuse: In EFUSE_BLK1__DATA1_REG is used 8 bits starting with 0 bit[0m
+D (1762) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 24 bit[0m
+D (1762) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 16 bit[0m
+D (1772) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 8 bit[0m
+D (1782) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 0 bit[0m
+D (1792) nvs: nvs_get_str_or_blob cal_data[0m
+D (1802) nvs: nvs_close 3[0m
+D (1802) efuse: In EFUSE_BLK1__DATA1_REG is used 8 bits starting with 8 bit[0m
+D (1802) efuse: In EFUSE_BLK1__DATA1_REG is used 8 bits starting with 0 bit[0m
+D (1812) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 24 bit[0m
+D (1812) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 16 bit[0m
+D (1822) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 8 bit[0m
+D (1832) efuse: In EFUSE_BLK1__DATA0_REG is used 8 bits starting with 0 bit[0m
+D (1852) temperature_sensor: range changed, change to index 2[0m
+D (1872) wifi:filter: set rx policy=0
+I (1872) wifi:mode : sta (48:27:e2:84:59:18)
+I (1872) wifi:enable tsf
+D (1872) wifi:filter: set rx policy=1
+D (1872) wifi:connect status 0 -> 0
+D (1872) event: running post WIFI_EVENT:41 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (1882) event: running post WIFI_EVENT:2 with handler 0x42031f88 and context 0x3fca9480 on loop 0x3fca835c[0m
+D (1892) wifi_init_default: wifi_start esp-netif:0x3fca9284 event-id2[0m
+D (1902) wifi_init_default: WIFI mac address: 48 27 e2 84 59 18[0m
+D (1912) esp_netif_lwip: check: remote, if=0x3fca9284 fn=0x42013298[0m
+D (1912) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (1922) esp_netif_handlers: esp_netif action has started with netif0x3fca9284 from event_id=2[0m
+D (1932) esp_netif_lwip: check: remote, if=0x3fca9284 fn=0x42013b5c[0m
+D (1932) esp_netif_lwip: esp_netif_start_api 0x3fca9284[0m
+D (1942) esp_netif_lwip: esp_netif_get_hostname esp_netif:0x3fca9284[0m
+D (1952) esp_netif_lwip: check: local, if=0x3fca9284 fn=0x420142b8[0m
+D (1952) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x3fca9284[0m
+D (1962) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (1962) event: running post WIFI_EVENT:2 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (1972) wpa: DPP: Sent event 3 to DPP task[0m
+[0;32mI (1982) wifi dpp-enrollee: Started listening for DPP Authentication[0m
+D (3982) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (3982) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (3992) wpa: DPP: Sent event 3 to DPP task[0m
+D (5992) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (5992) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (6002) wpa: DPP: Sent event 3 to DPP task[0m
+D (8002) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (8002) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (8012) wpa: DPP: Sent event 3 to DPP task[0m
+D (10022) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (10022) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (10032) wpa: DPP: Sent event 3 to DPP task[0m
+D (12032) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (12032) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (12042) wpa: DPP: Sent event 3 to DPP task[0m
+D (14042) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (14042) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (14052) wpa: DPP: Sent event 3 to DPP task[0m
+D (16062) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (16062) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+evt_id= 3
+Event ID: 3
+D (16072) wpa: DPP: Sent event 3 to DPP task[0m
+called esp_supp_rx_action
+evt_id= 2
+Event ID: 2
+D (17762) wpa: DPP: Sent event 2 to DPP task[0m
+D (17762) wpa: DPP: Rx Public Action frame: action - 9[0m
+dpp listen is inprogress
+dpp listen is end
+D (17772) event: running post WIFI_EVENT:20 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (17782) event: running post WIFI_EVENT:20 with handler 0x42015c28 and context 0x3fcb5838 on loop 0x3fca835c[0m
+called esp_dpp_rx_frm()
+hi
+type = 0
+called esp_dpp_rx_auth_req
+[0;32mI (17792) wpa: DPP: Authentication Request from 86:36:33:d3:d8:3c[0m
+D (17802) intr_alloc: Connected src 76 to int 2 (cpu 1)[0m
+[0;31mE (17812) wpa: curve: secp256r1[0m
+[0;31mE (17812) wpa: prime len is 32[0m
+[0;31mE (17812) wpa: Q_x: - hexdump(len=32):[0m
+[0;31mE (17822) wpa: b5 09 76 de 0a 5a a2 4a f4 07 6f 3f 77 13 61 d1 [0m
+[0;31mE (17822) wpa: f6 a8 3e 52 e7 8f 2c 1d 3d 22 61 3e 2e 28 cb 15 [0m
+[0;31mE (17832) wpa: Q_y: - hexdump(len=32):[0m
+[0;31mE (17832) wpa: 90 7c 54 b3 0b 63 93 3b cf c9 64 ee 31 2e 39 23 [0m
+[0;31mE (17842) wpa: cf 7c 8e ad f0 af f9 ef 6d 60 dd ba 52 16 34 7e [0m
+[0;31mE (17852) wpa: d:      - hexdump(len=32):[0m
+[0;31mE (17852) wpa: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 [0m
+[0;31mE (17862) wpa: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 [0m
+D (17872) intr_alloc: Connected src 77 to int 3 (cpu 1)[0m
+D (18022) wpa: DPP: ECDH shared secret (M.x) - hexdump(len=32):[0m
+D (18022) wpa: 57 95 c1 14 3c 92 17 9d 63 bd 82 95 3f 36 30 52 [0m
+D (18022) wpa: 0f bd f1 a7 50 86 54 d3 81 58 99 52 a3 c5 e9 09 [0m
+D (18032) wpa: DPP: PRK = HKDF-Extract(<>, IKM=M.x) - hexdump(len=32):[0m
+D (18042) wpa: 0d cc be ff 10 ea d0 9d b3 7d 0b 4c fe 4d ce 8a [0m
+D (18042) wpa: 3a 38 5c 24 24 4b 7d 06 0b 1e f3 da 1d 86 2d b8 [0m
+D (18052) wpa: DPP: k1 = HKDF-Expand(PRK, info, L) - hexdump(len=32):[0m
+D (18062) wpa: 5a bb 94 16 3c fb be ba c9 9a 61 81 6e 88 69 03 [0m
+D (18062) wpa: 0a dd e8 12 47 6d 02 82 bc a4 f6 db 19 3f 80 47 [0m
+D (18072) wpa: DDP: AES-SIV AD[0] - hexdump(len=6):[0m
+D (18072) wpa: 50 6f 9a 1a 01 00 [0m
+D (18082) wpa: DDP: AES-SIV AD[1] - hexdump(len=140):[0m
+D (18082) wpa: 02 10 20 00 52 44 bf cb 85 e9 66 78 80 15 2f 43 [0m
+D (18092) wpa: 9c 61 08 69 94 9a 1c a2 e7 be 6f 4e 3d 9f f1 5f [0m
+D (18092) wpa: 24 b1 05 6f 01 10 20 00 2e 3b d1 d1 02 89 4e 49 [0m
+D (18102) wpa: 8f dc 3d aa da 59 03 ca e1 2f 6c 0a 67 c4 a2 fe [0m
+D (18102) wpa: 72 b1 9c 8c f6 bb 72 d8 03 10 40 00 b5 09 76 de [0m
+D (18112) wpa: 0a 5a a2 4a f4 07 6f 3f 77 13 61 d1 f6 a8 3e 52 [0m
+D (18122) wpa: e7 8f 2c 1d 3d 22 61 3e 2e 28 cb 15 90 7c 54 b3 [0m
+D (18122) wpa: 0b 63 93 3b cf c9 64 ee 31 2e 39 23 cf 7c 8e ad [0m
+D (18132) wpa: f0 af f9 ef 6d 60 dd ba 52 16 34 7e [0m
+D (18132) wpa: DPP: AES-SIV ciphertext - hexdump(len=41):[0m
+D (18142) wpa: 61 06 99 4f 96 49 d6 33 55 36 67 f4 80 d6 47 1c [0m
+D (18152) wpa: 6f 11 8d 88 05 4b a1 15 2f 54 ee 4c 3b 2e ee 3c [0m
+D (18152) wpa: 70 36 bc d2 c1 90 75 7c 9e [0m
+D (18162) wpa: DPP: AES-SIV cleartext - hexdump(len=25):[0m
+D (18162) wpa: 05 10 10 00 87 eb 06 5a b9 8b 1a b8 b2 4f 05 c8 [0m
+D (18172) wpa: 0f a1 51 7b 06 10 01 00 02 [0m
+D (18172) wpa: DPP: I-nonce - hexdump(len=16):[0m
+D (18182) wpa: 87 eb 06 5a b9 8b 1a b8 b2 4f 05 c8 0f a1 51 7b [0m
+D (18182) wpa: DPP: I-capabilities: 0x02[0m
+D (18192) wpa: DPP: Acting as Enrollee[0m
+D (18192) wpa: DPP: Build Authentication Response[0m
+D (18192) wpa: DPP: R-nonce - hexdump(len=16):[0m
+D (18202) wpa: 15 4b 6b f8 2a c5 65 ae 27 72 f7 f4 a4 91 6c 51 [0m
+D (18262) wpa: DPP: Generating a keypair[0m
+[0;31mE (18262) wpa: curve: secp256r1[0m
+[0;31mE (18262) wpa: prime len is 32[0m
+[0;31mE (18262) wpa: Q_x: - hexdump(len=32):[0m
+[0;31mE (18262) wpa: 1f d1 b1 d2 2d f9 26 a0 0a 79 b4 83 41 06 30 17 [0m
+[0;31mE (18272) wpa: 42 2e 7f ec 34 8f 88 ec 7c 68 76 22 36 03 dc af [0m
+[0;31mE (18282) wpa: Q_y: - hexdump(len=32):[0m
+[0;31mE (18282) wpa: a6 d5 fa 1b 50 5c b2 ee 11 e3 9b d0 45 06 d6 39 [0m
+[0;31mE (18292) wpa: 76 50 80 77 ec c0 82 2d d0 87 77 27 8d ad fa 43 [0m
+[0;31mE (18292) wpa: d:      - hexdump(len=32):[0m
+[0;31mE (18302) wpa: 22 bc 69 54 14 3e 50 34 59 ce 5b 07 de 58 91 f4 [0m
+[0;31mE (18312) wpa: dd db bd 2a 6f 01 60 87 cd db 45 e9 ae 73 db aa [0m
+D (18462) wpa: DPP: ECDH shared secret (N.x) - hexdump(len=32):[0m
+D (18472) wpa: 1f 83 2a 3f 5d b6 f0 fd 75 f5 99 7c ed 77 3a ec [0m
+D (18472) wpa: c9 13 86 bf 96 f1 bc 84 6c 0c 87 43 3b 10 95 ad [0m
+D (18472) wpa: DPP: PRK = HKDF-Extract(<>, IKM=N.x) - hexdump(len=32):[0m
+D (18482) wpa: 6b 24 d8 4a be 25 81 97 c3 d7 f4 42 a0 2a c8 2d [0m
+D (18482) wpa: e1 0d 77 6b c5 fd d9 42 4f 7b f1 d8 cb d6 ca b6 [0m
+D (18492) wpa: DPP: k2 = HKDF-Expand(PRK, info, L) - hexdump(len=32):[0m
+D (18502) wpa: bb f7 3c 4e f3 83 6a c7 31 15 77 13 89 77 7e b4 [0m
+D (18502) wpa: 7d ea 4e c9 a4 d2 09 6b e3 95 ac c2 b0 48 9d 5e [0m
+D (18512) wpa: DPP: PRK = HKDF-Extract(<>, IKM) - hexdump(len=32):[0m
+D (18522) wpa: 4d 40 24 0d 80 90 0f 7e c2 49 97 b7 01 2f 3c a5 [0m
+D (18522) wpa: 7a a5 32 12 97 39 7b 00 38 91 ab 52 e2 7f 0e 23 [0m
+D (18532) wpa: DPP: ke = HKDF-Expand(PRK, info, L) - hexdump(len=32):[0m
+D (18532) wpa: 8d 58 29 8f f8 53 04 d3 a0 23 dd 4a 4e 49 df 78 [0m
+D (18542) wpa: 8a 4d 33 54 2f 4c a0 db e8 84 d8 c6 76 5b ab bc [0m
+D (18552) wpa: DPP: R-auth hash components[0m
+D (18552) wpa: DPP: hash component - hexdump(len=16):[0m
+D (18562) wpa: 87 eb 06 5a b9 8b 1a b8 b2 4f 05 c8 0f a1 51 7b [0m
+D (18562) wpa: DPP: hash component - hexdump(len=16):[0m
+D (18572) wpa: 15 4b 6b f8 2a c5 65 ae 27 72 f7 f4 a4 91 6c 51 [0m
+D (18572) wpa: DPP: hash component - hexdump(len=32):[0m
+D (18582) wpa: b5 09 76 de 0a 5a a2 4a f4 07 6f 3f 77 13 61 d1 [0m
+D (18582) wpa: f6 a8 3e 52 e7 8f 2c 1d 3d 22 61 3e 2e 28 cb 15 [0m
+D (18592) wpa: DPP: hash component - hexdump(len=32):[0m
+D (18592) wpa: 1f d1 b1 d2 2d f9 26 a0 0a 79 b4 83 41 06 30 17 [0m
+D (18602) wpa: 42 2e 7f ec 34 8f 88 ec 7c 68 76 22 36 03 dc af [0m
+D (18612) wpa: DPP: hash component - hexdump(len=32):[0m
+D (18612) wpa: 53 18 a3 e3 ba e0 98 64 15 20 fd da 32 6c 87 64 [0m
+D (18622) wpa: 9f c3 6b 19 72 17 ed a5 8b 9b 4e a1 f6 2c c2 71 [0m
+D (18622) wpa: DPP: hash component - hexdump(len=1):[0m
+D (18632) wpa: 00 [0m
+D (18632) wpa: DPP: R-auth - hexdump(len=32):[0m
+D (18642) wpa: bb 2f b6 d7 ef a6 01 62 b2 44 83 62 68 f4 0c b0 [0m
+D (18642) wpa: 8e ed e5 ae ef fa 2e ae 91 a0 b4 d1 8a 47 66 cd [0m
+D (18652) wpa: DPP: {R-auth}ke - hexdump(len=52):[0m
+D (18652) wpa: af dc 7c ae df cb 5f 1b 88 f2 5f 2d eb ad cf f9 [0m
+D (18662) wpa: 99 77 f6 95 42 2b bd e0 65 dc 17 6d ba 9b 52 f6 [0m
+D (18662) wpa: 64 42 5d ac e0 bb a1 d5 07 91 8c 27 36 8c 6b 7c [0m
+D (18672) wpa: d4 1c eb fc [0m
+D (18672) wpa: DPP: Status 0[0m
+D (18682) wpa: DPP: R-Bootstrap Key Hash[0m
+D (18682) wpa: DDP: AES-SIV AD[0] - hexdump(len=6):[0m
+D (18682) wpa: 50 6f 9a 1a 01 01 [0m
+D (18692) wpa: DDP: AES-SIV AD[1] - hexdump(len=109):[0m
+D (18692) wpa: 00 10 01 00 00 02 10 20 00 52 44 bf cb 85 e9 66 [0m
+D (18702) wpa: 78 80 15 2f 43 9c 61 08 69 94 9a 1c a2 e7 be 6f [0m
+D (18702) wpa: 4e 3d 9f f1 5f 24 b1 05 6f 09 10 40 00 1f d1 b1 [0m
+D (18712) wpa: d2 2d f9 26 a0 0a 79 b4 83 41 06 30 17 42 2e 7f [0m
+D (18722) wpa: ec 34 8f 88 ec 7c 68 76 22 36 03 dc af a6 d5 fa [0m
+D (18722) wpa: 1b 50 5c b2 ee 11 e3 9b d0 45 06 d6 39 76 50 80 [0m
+D (18732) wpa: 77 ec c0 82 2d d0 87 77 27 8d ad fa 43 [0m
+D (18732) wpa: DPP: AES-SIV cleartext - hexdump(len=101):[0m
+D (18742) wpa: 07 10 10 00 15 4b 6b f8 2a c5 65 ae 27 72 f7 f4 [0m
+D (18752) wpa: a4 91 6c 51 05 10 10 00 87 eb 06 5a b9 8b 1a b8 [0m
+D (18752) wpa: b2 4f 05 c8 0f a1 51 7b 08 10 01 00 01 04 10 34 [0m
+D (18762) wpa: 00 af dc 7c ae df cb 5f 1b 88 f2 5f 2d eb ad cf [0m
+D (18762) wpa: f9 99 77 f6 95 42 2b bd e0 65 dc 17 6d ba 9b 52 [0m
+D (18772) wpa: f6 64 42 5d ac e0 bb a1 d5 07 91 8c 27 36 8c 6b [0m
+D (18782) wpa: 7c d4 1c eb fc [0m
+D (18782) wpa: DPP: AES-SIV ciphertext - hexdump(len=117):[0m
+D (18782) wpa: 9d bd 53 91 00 d6 07 c7 da dd 8a c4 a3 81 c2 7c [0m
+D (18792) wpa: 9f ff 45 cf af ce 0b 04 46 ab dc 2f ff be 30 f9 [0m
+D (18802) wpa: d2 ca 0c 92 9e 65 9a 7b 55 ad f0 15 ed dc 95 98 [0m
+D (18802) wpa: 46 61 a8 74 45 49 d0 92 c3 7b ae 8d 34 8b aa 0f [0m
+D (18812) wpa: 00 23 32 59 e8 64 03 c7 bf 0c a9 63 d8 3c fd e9 [0m
+D (18812) wpa: 87 31 b2 69 24 d3 52 a5 27 fe 8f 3c ab 62 aa 89 [0m
+D (18822) wpa: 20 59 4f fe 1d 25 06 f6 f6 8c 48 77 79 98 7d 5f [0m
+D (18832) wpa: 59 1e c8 43 e9 [0m
+D (18832) wpa: DPP: Authentication Response frame attributes - hexdump(len=238):[0m
+D (18842) wpa: 04 09 50 6f 9a 1a 01 01 00 10 01 00 00 02 10 20 [0m
+D (18842) wpa: 00 52 44 bf cb 85 e9 66 78 80 15 2f 43 9c 61 08 [0m
+D (18852) wpa: 69 94 9a 1c a2 e7 be 6f 4e 3d 9f f1 5f 24 b1 05 [0m
+D (18852) wpa: 6f 09 10 40 00 1f d1 b1 d2 2d f9 26 a0 0a 79 b4 [0m
+D (18862) wpa: 83 41 06 30 17 42 2e 7f ec 34 8f 88 ec 7c 68 76 [0m
+D (18872) wpa: 22 36 03 dc af a6 d5 fa 1b 50 5c b2 ee 11 e3 9b [0m
+D (18872) wpa: d0 45 06 d6 39 76 50 80 77 ec c0 82 2d d0 87 77 [0m
+D (18882) wpa: 27 8d ad fa 43 04 10 75 00 9d bd 53 91 00 d6 07 [0m
+D (18882) wpa: c7 da dd 8a c4 a3 81 c2 7c 9f ff 45 cf af ce 0b [0m
+D (18892) wpa: 04 46 ab dc 2f ff be 30 f9 d2 ca 0c 92 9e 65 9a [0m
+D (18902) wpa: 7b 55 ad f0 15 ed dc 95 98 46 61 a8 74 45 49 d0 [0m
+D (18902) wpa: 92 c3 7b ae 8d 34 8b aa 0f 00 23 32 59 e8 64 03 [0m
+D (18912) wpa: c7 bf 0c a9 63 d8 3c fd e9 87 31 b2 69 24 d3 52 [0m
+D (18912) wpa: a5 27 fe 8f 3c ab 62 aa 89 20 59 4f fe 1d 25 06 [0m
+D (18922) wpa: f6 f6 8c 48 77 79 98 7d 5f 59 1e c8 43 e9 [0m
+D (18932) wpa: Called esp_dpp_send_action_frame
+[0m
+DPP: Mgmt Tx - MAC:86:36:33:d3:d8:3c, Channel-6, WaitT-2000D (18932) wpa: ELOOP: esp_dpp_rx_auth_req:194 called to remove timer handler=0x42015430, removed count=0[0m
+called esp_supp_rx_action
+evt_id= 2
+D (18952) wpa: ELOOP: Added one timer from esp_dpp_rx_auth_req:195 to call 0x42015430, current order=0[0m
+D (18952) wpa: DPP: Sent event 2 to DPP task[0m
+D (18942) event: running post WIFI_EVENT:19 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+ret = 0
+D (18972) event: running post WIFI_EVENT:19 with handler 0x42015c28 and context 0x3fcb5808 on loop 0x3fca835c[0m
+Mgmt Tx Status - 0, Cookie - 0x42015484Event ID: 2
+D (18982) wpa: Mgmt Tx Status - 0, Cookie - 0x42015484[0m
+D (18992) wpa: DPP: Rx Public Action frame: action - 9[0m
+dpp listen is end
+called esp_dpp_rx_frm()
+hi
+type = 2
+D (19002) wpa: DPP: Authentication Confirmation from 86:36:33:d3:d8:3c[0m
+D (19012) wpa: ELOOP: esp_dpp_rx_auth_conf:285 called to remove timer handler=0x42015430, removed count=1[0m
+esp_dpp.c: Called dpp_auth_conf_rx
+D (19022) wpa: Called dpp_auth_conf_rx
+[0m
+D (19032) wpa: DPP: Wrapped data - hexdump(len=52):[0m
+D (19032) wpa: fe 5f 95 a3 5c 38 ed bf 1b 93 71 40 1b be bc 1b [0m
+D (19042) wpa: 92 0c 63 6c 3f 34 76 3c 7d 3d 92 6e f7 40 a2 b6 [0m
+D (19042) wpa: 9e 0c f8 18 8a 84 a9 af 4f ed ad 48 c8 61 31 ad [0m
+D (19052) wpa: a8 be dc 7b [0m
+D (19052) wpa: DPP: Responder Bootstrapping Key Hash - hexdump(len=32):[0m
+D (19062) wpa: 52 44 bf cb 85 e9 66 78 80 15 2f 43 9c 61 08 69 [0m
+D (19062) wpa: 94 9a 1c a2 e7 be 6f 4e 3d 9f f1 5f 24 b1 05 6f [0m
+D (19072) wpa: DPP: Status 0[0m
+D (19072) wpa: DDP: AES-SIV AD[0] - hexdump(len=6):[0m
+D (19082) wpa: 50 6f 9a 1a 01 02 [0m
+D (19082) wpa: DDP: AES-SIV AD[1] - hexdump(len=41):[0m
+D (19092) wpa: 00 10 01 00 00 02 10 20 00 52 44 bf cb 85 e9 66 [0m
+D (19092) wpa: 78 80 15 2f 43 9c 61 08 69 94 9a 1c a2 e7 be 6f [0m
+D (19102) wpa: 4e 3d 9f f1 5f 24 b1 05 6f [0m
+D (19102) wpa: DPP: AES-SIV ciphertext - hexdump(len=52):[0m
+D (19112) wpa: fe 5f 95 a3 5c 38 ed bf 1b 93 71 40 1b be bc 1b [0m
+D (19112) wpa: 92 0c 63 6c 3f 34 76 3c 7d 3d 92 6e f7 40 a2 b6 [0m
+D (19122) wpa: 9e 0c f8 18 8a 84 a9 af 4f ed ad 48 c8 61 31 ad [0m
+D (19132) wpa: a8 be dc 7b [0m
+D (19132) wpa: DPP: AES-SIV cleartext - hexdump(len=36):[0m
+D (19142) wpa: 0a 10 20 00 9b 8f 2d d2 4c bd b3 fe 19 0c 59 86 [0m
+D (19142) wpa: 29 4c a7 89 a4 3f 8a 43 f1 17 fa ad 1a de 85 f8 [0m
+D (19152) wpa: aa db 4e 28 [0m
+D (19152) wpa: DPP: Received Initiator Authenticating Tag - hexdump(len=32):[0m
+D (19162) wpa: 9b 8f 2d d2 4c bd b3 fe 19 0c 59 86 29 4c a7 89 [0m
+D (19162) wpa: a4 3f 8a 43 f1 17 fa ad 1a de 85 f8 aa db 4e 28 [0m
+D (19172) wpa: DPP: I-auth hash components[0m
+D (19172) wpa: DPP: hash component - hexdump(len=16):[0m
+D (19182) wpa: 15 4b 6b f8 2a c5 65 ae 27 72 f7 f4 a4 91 6c 51 [0m
+D (19182) wpa: DPP: hash component - hexdump(len=16):[0m
+D (19192) wpa: 87 eb 06 5a b9 8b 1a b8 b2 4f 05 c8 0f a1 51 7b [0m
+D (19202) wpa: DPP: hash component - hexdump(len=32):[0m
+D (19202) wpa: 1f d1 b1 d2 2d f9 26 a0 0a 79 b4 83 41 06 30 17 [0m
+D (19212) wpa: 42 2e 7f ec 34 8f 88 ec 7c 68 76 22 36 03 dc af [0m
+D (19212) wpa: DPP: hash component - hexdump(len=32):[0m
+D (19222) wpa: b5 09 76 de 0a 5a a2 4a f4 07 6f 3f 77 13 61 d1 [0m
+D (19222) wpa: f6 a8 3e 52 e7 8f 2c 1d 3d 22 61 3e 2e 28 cb 15 [0m
+D (19232) wpa: DPP: hash component - hexdump(len=32):[0m
+D (19232) wpa: 53 18 a3 e3 ba e0 98 64 15 20 fd da 32 6c 87 64 [0m
+D (19242) wpa: 9f c3 6b 19 72 17 ed a5 8b 9b 4e a1 f6 2c c2 71 [0m
+D (19252) wpa: DPP: hash component - hexdump(len=1):[0m
+D (19252) wpa: 01 [0m
+D (19252) wpa: DPP: I-auth - hexdump(len=32):[0m
+D (19262) wpa: 9b 8f 2d d2 4c bd b3 fe 19 0c 59 86 29 4c a7 89 [0m
+D (19262) wpa: a4 3f 8a 43 f1 17 fa ad 1a de 85 f8 aa db 4e 28 [0m
+D (19272) wpa: DPP: Calculated Initiator Authenticating Tag - hexdump(len=32):[0m
+D (19282) wpa: 9b 8f 2d d2 4c bd b3 fe 19 0c 59 86 29 4c a7 89 [0m
+D (19282) wpa: a4 3f 8a 43 f1 17 fa ad 1a de 85 f8 aa db 4e 28 [0m
+D (19292) wpa: DPP: Authentication success - clear temporary keys[0m
+D (19302) wpa: DPP: Build configuration request[0m
+D (19302) wpa: DPP: E-nonce - hexdump(len=16):[0m
+D (19302) wpa: 15 2b 05 d3 7e 37 d4 87 ba 1e a9 dd 8c 38 0a dc [0m
+D (19312) wpa: DPP: configRequest JSON - hexdump(len=71):[0m
+D (19322) wpa: 7b 22 6e 61 6d 65 22 3a 22 54 65 73 74 22 2c 22 [0m
+D (19322) wpa: 77 69 2d 66 69 5f 74 65 63 68 22 3a 22 69 6e 66 [0m
+D (19332) wpa: 72 61 22 2c 22 6e 65 74 52 6f 6c 65 22 3a 22 73 [0m
+D (19332) wpa: 74 61 22 2c 22 62 61 6e 64 53 75 70 70 6f 72 74 [0m
+D (19342) wpa: 22 3a 5b 38 31 5d 7d [0m
+D (19342) wpa: DPP: AES-SIV cleartext - hexdump(len=95):[0m
+D (19352) wpa: 14 10 10 00 15 2b 05 d3 7e 37 d4 87 ba 1e a9 dd [0m
+D (19362) wpa: 8c 38 0a dc 0e 10 47 00 7b 22 6e 61 6d 65 22 3a [0m
+D (19362) wpa: 22 54 65 73 74 22 2c 22 77 69 2d 66 69 5f 74 65 [0m
+D (19372) wpa: 63 68 22 3a 22 69 6e 66 72 61 22 2c 22 6e 65 74 [0m
+D (19372) wpa: 52 6f 6c 65 22 3a 22 73 74 61 22 2c 22 62 61 6e [0m
+D (19382) wpa: 64 53 75 70 70 6f 72 74 22 3a 5b 38 31 5d 7d [0m
+D (19392) wpa: DPP: AES-SIV ciphertext - hexdump(len=111):[0m
+D (19392) wpa: 18 c0 41 e5 a5 75 31 95 a5 25 64 a5 8f 1a 2e a9 [0m
+D (19402) wpa: c4 8c 97 e8 e7 78 83 c9 6c 28 ff 0d b5 ea d3 64 [0m
+D (19402) wpa: 49 85 18 43 4b 65 a7 56 f5 13 36 d3 6c e6 58 4e [0m
+D (19412) wpa: 49 54 3c 98 db b1 8a ea 76 a8 bf bb df 91 9e 6a [0m
+D (19412) wpa: c1 23 30 a2 88 96 cc c8 03 69 1f 57 f7 b0 cf fc [0m
+D (19422) wpa: ed 62 79 4c 9e 39 a1 78 3c 04 13 0d cc d2 6b ef [0m
+D (19432) wpa: cd 19 87 ff 84 59 e7 3a 78 cf 6b 96 a6 23 03 [0m
+D (19432) wpa: DPP: Configuration Request frame attributes - hexdump(len=115):[0m
+D (19442) wpa: 04 10 6f 00 18 c0 41 e5 a5 75 31 95 a5 25 64 a5 [0m
+D (19452) wpa: 8f 1a 2e a9 c4 8c 97 e8 e7 78 83 c9 6c 28 ff 0d [0m
+D (19452) wpa: b5 ea d3 64 49 85 18 43 4b 65 a7 56 f5 13 36 d3 [0m
+D (19462) wpa: 6c e6 58 4e 49 54 3c 98 db b1 8a ea 76 a8 bf bb [0m
+D (19462) wpa: df 91 9e 6a c1 23 30 a2 88 96 cc c8 03 69 1f 57 [0m
+D (19472) wpa: f7 b0 cf fc ed 62 79 4c 9e 39 a1 78 3c 04 13 0d [0m
+D (19482) wpa: cc d2 6b ef cd 19 87 ff 84 59 e7 3a 78 cf 6b 96 [0m
+D (19482) wpa: a6 23 03 [0m
+D (19482) wpa: DPP: GAS request to 86:36:33:d3:d8:3c (chan 6)[0m
+D (19492) wpa: Called esp_dpp_send_action_frame
+[0m
+DPP: Mgmt Tx - MAC:86:36:33:d3:d8:3c, Channel-6, WaitT-2000ret = 0
+D (19502) event: running post WIFI_EVENT:19 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (19512) event: running post WIFI_EVENT:19 with handler 0x42015c28 and context 0x3fcb5808 on loop 0x3fca835c[0m
+Mgmt Tx Status - 0, Cookie - 0x42015484D (19522) wpa: Mgmt Tx Status - 0, Cookie - 0x42015484[0m
+called esp_supp_rx_action
+evt_id= 2
+Event ID: 2
+D (19532) wpa: DPP: Sent event 2 to DPP task[0m
+D (19532) wpa: DPP: Rx Public Action frame: action - 11[0m
+D (19542) wpa: DPP: AES-SIV ciphertext - hexdump(len=140):[0m
+D (19552) wpa: 0e 55 a8 95 bf dd ae 44 4c 55 41 e2 7d e0 6d c9 [0m
+D (19552) wpa: ab bc 15 92 0b 3e 45 9d 85 08 f7 bc 76 65 59 85 [0m
+D (19562) wpa: cb 16 d0 2f ca a0 81 95 01 1b a8 ae 2a 03 c9 19 [0m
+D (19572) wpa: f4 8d 45 9f 9b 01 ae af e3 b4 c9 c2 a7 d6 8d 80 [0m
+D (19572) wpa: 54 35 0d 9e 40 00 93 78 7a e4 a2 5a 0b 50 4c e2 [0m
+D (19582) wpa: 72 e5 93 5d d5 d5 a3 fb dc ae a8 d1 a0 08 5c b2 [0m
+D (19582) wpa: 7d a0 48 5e 83 4d fe 71 53 eb 31 c7 cc fa 29 59 [0m
+D (19592) wpa: bd 4c 3c 6c 9f a4 47 55 0d e1 ad a3 78 1d 09 db [0m
+D (19602) wpa: 70 c2 89 2d cb fa ff 23 c3 b8 be a0 [0m
+D (19602) wpa: DDP: AES-SIV AD - hexdump(len=5):[0m
+D (19612) wpa: 00 10 01 00 00 [0m
+D (19612) wpa: DPP: AES-SIV cleartext - hexdump(len=124):[0m
+D (19612) wpa: 14 10 10 00 15 2b 05 d3 7e 37 d4 87 ba 1e a9 dd [0m
+D (19622) wpa: 8c 38 0a dc 0c 10 64 00 7b 22 77 69 2d 66 69 5f [0m
+D (19632) wpa: 74 65 63 68 22 3a 22 69 6e 66 72 61 22 2c 22 64 [0m
+D (19632) wpa: 69 73 63 6f 76 65 72 79 22 3a 7b 22 73 73 69 64 [0m
+D (19642) wpa: 22 3a 22 6e 6f 6d 6c 61 62 41 50 2d 47 22 7d 2c [0m
+D (19642) wpa: 22 63 72 65 64 22 3a 7b 22 61 6b 6d 22 3a 22 70 [0m
+D (19652) wpa: 73 6b 22 2c 22 70 61 73 73 22 3a 22 74 61 6e 69 [0m
+D (19662) wpa: 5f 6e 6f 6d 5f 31 31 62 67 22 7d 7d [0m
+D (19662) wpa: DPP: Enrollee Nonce - hexdump(len=16):[0m
+D (19672) wpa: 15 2b 05 d3 7e 37 d4 87 ba 1e a9 dd 8c 38 0a dc [0m
+D (19672) wpa: DPP: Status 0[0m
+D (19682) wpa: DPP: configurationObject JSON - hexdump(len=100):[0m
+D (19682) wpa: 7b 22 77 69 2d 66 69 5f 74 65 63 68 22 3a 22 69 [0m
+D (19692) wpa: 6e 66 72 61 22 2c 22 64 69 73 63 6f 76 65 72 79 [0m
+D (19692) wpa: 22 3a 7b 22 73 73 69 64 22 3a 22 6e 6f 6d 6c 61 [0m
+D (19702) wpa: 62 41 50 2d 47 22 7d 2c 22 63 72 65 64 22 3a 7b [0m
+D (19712) wpa: 22 61 6b 6d 22 3a 22 70 73 6b 22 2c 22 70 61 73 [0m
+D (19712) wpa: 73 22 3a 22 74 61 6e 69 5f 6e 6f 6d 5f 31 31 62 [0m
+D (19722) wpa: 67 22 7d 7d [0m
+D (19722) wpa: DPP: discovery::ssid - hexdump(len=10):[0m
+D (19732) wpa: 6e 6f 6d 6c 61 62 41 50 2d 47 [0m
+D (19732) wpa: DPP: Legacy akm=psk credential[0m
+D (19732) wpa: DPP: Legacy passphrase - hexdump(len=13):[0m
+D (19742) wpa: 74 61 6e 69 5f 6e 6f 6d 5f 31 31 62 67 [0m
+D (19752) wpa: DPP: JSON parsing completed successfully[0m
+D (19752) wifi:clear blacklist
+D (19752) nvs: nvs_get_str_or_blob sta.ssid[0m
+D (19762) nvs: nvs_get sta.pmf_e 1[0m
+[0;32mI (19762) wifi dpp-enrollee: DPP Authentication successful, connecting to AP : nomlabAP-G[0m
+D (19772) wifi:Start wifi connect
+D (19772) wifi:connect status 0 -> 0
+D (19782) wifi:connect chan=0
+D (19782) wifi:first chan=13
+D (19782) wifi:connect status 0 -> 1
+D (19792) wifi:filter: set rx policy=3
+D (19792) wifi:clear scan ap list
+D (19792) wifi:start scan: type=0x50f, priority=2, cb=0x4205b410, arg=0x0, ss_state=0x1, time=19798971, index=0
+D (19802) wifi:perform scan: ss_state=0x9, chan<13,0>, dur<360,360>
+D (19842) wifi:rsn valid: gcipher=3 ucipher=3 akm=5 mac=2e:80:88:d8:61:a5
+[0;32mI (19842) wpa: BSS: Add new id 0 BSSID 2e:80:88:d8:61:a5 SSID 'nomlabAP-G' chan 13[0m
+D (19852) wifi:profile match: ss_state=0x7
+D (19852) wifi:scan end: arg=0x0, status=0, ss_state=0x7
+D (19852) wifi:find first mathched ssid, scan done
+D (19862) wifi:filter: set rx policy=4
+D (19862) wifi:first chan=1
+D (19872) wifi:handoff_cb: status=0
+D (19872) wifi:ap found, mac=2e:80:88:d8:61:a5
+D (19872) wifi:going for connection with bssid=2e:80:88:d8:61:a5
+D (19882) wifi:new_bss=0x3fc9f998, cur_bss=0x0, new_chan=<13,2>, cur_chan=1
+D (19882) wifi:filter: set rx policy=5
+D (19892) wpa: WPA: set AP RSNXE - hexdump(len=0):[0m
+D (19892) wpa:  [NULL][0m
+I (19902) wifi:new:<13,2>, old:<1,0>, ap:<255,255>, sta:<13,2>, prof:1, snd_ch_cfg:0x0
+D (19902) wifi:connect_op: status=0, auth=5, cipher=3 
+D (19912) wifi:auth mode is not none
+D (19912) wifi:connect_bss: auth=1, reconnect=0
+I (19922) wifi:state: init -> auth (0xb0)
+D (19922) wifi:start 1s AUTH timer
+D (19922) wifi:clear scan ap list
+D (19932) event: running post WIFI_EVENT:41 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (19932) wifi:recv disassoc: reason=8
+I (19942) wifi:state: auth -> init (0x8a0)
+D (19942) wifi:stop beacon and connect timers
+D (19952) wifi:connect status 1 -> 4
+D (19952) wifi:reason: auth fail(202)
+D (19952) wifi:add bssid 2e:80:88:d8:61:a5 to blacklist, cnt=0
+D (19962) wifi:stop CSA timer
+D (19962) wifi:remove 2e:80:88:d8:61:a5 from rc list
+I (19972) wifi:new:<13,0>, old:<13,2>, ap:<255,255>, sta:<13,2>, prof:1, snd_ch_cfg:0x0
+D (19982) wifi:filter: set rx policy=8
+D (19982) wpa: ELOOP: wpa_sm_notify_disassoc:2256 called to remove timer handler=0x42017e7c, removed count=0[0m
+D (19992) wpa: WPA: Clear old PMK and PTK[0m
+D (19992) wpa: ELOOP: wpas_rrm_reset:51 called to remove timer handler=0x4201e93c, removed count=0[0m
+D (20002) wpa: ELOOP: wpas_clear_beacon_rep_data:1166 called to remove timer handler=0x4201f3dc, removed count=0[0m
+D (20012) wpa: ELOOP: wpas_clear_beacon_rep_data:1166 called to remove timer handler=0x4201f3dc, removed count=0[0m
+D (20022) wifi:Send disconnect event, reason=202, AP number=0
+D (20032) event: running post WIFI_EVENT:41 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (20042) event: running post WIFI_EVENT:5 with handler 0x42031fa0 and context 0x3fca9510 on loop 0x3fca835c[0m
+D (20052) esp_netif_handlers: esp_netif action disconnected with netif0x3fca9284 from event_id=5[0m
+D (20062) esp_netif_lwip: check: remote, if=0x3fca9284 fn=0x42013f70[0m
+D (20062) esp_netif_lwip: esp_netif_down_api esp_netif:0x3fca9284[0m
+D (20072) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x3fca9284[0m
+D (20082) esp_netif_lwip: if0x3fca9284 start ip lost tmr: interval=120[0m
+D (20082) esp_netif_lwip: check: local, if=0x3fca9284 fn=0x420142b8[0m
+D (20092) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x3fca9284[0m
+D (20092) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (20102) event: running post WIFI_EVENT:5 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (20112) wifi:Start wifi connect
+D (20112) wifi:connect status 4 -> 0
+D (20122) wifi:connect chan=0
+D (20122) wifi:first chan=13
+D (20122) wifi:connect status 0 -> 1
+D (20132) wifi:filter: set rx policy=3
+D (20132) wifi:clear scan ap list
+D (20132) wifi:start scan: type=0x50f, priority=2, cb=0x4205b410, arg=0x0, ss_state=0x1, time=20139723, index=0
+D (20142) wifi:perform scan: ss_state=0x9, chan<13,0>, dur<360,360>
+[0;32mI (20152) wifi dpp-enrollee: retry to connect to the AP[0m
+[0;32mI (20152) wifi dpp-enrollee: connect to the AP fail[0m
+D (20252) wifi:rsn valid: gcipher=3 ucipher=3 akm=5 mac=2e:80:88:d8:61:a5
+D (20252) wifi:find the 2e:80:88:d8:61:a5 in blacklist.
+
+D (20462) wifi:rsn valid: gcipher=3 ucipher=3 akm=5 mac=2e:80:88:d8:61:a5
+D (20462) wifi:find the 2e:80:88:d8:61:a5 in blacklist.
+
+D (20512) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (20512) wifi:perform scan: ss_state=0x9, chan<1,0>, dur<0,120>
+D (20632) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (20632) wifi:perform scan: ss_state=0x9, chan<2,0>, dur<0,120>
+D (20752) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (20752) wifi:perform scan: ss_state=0x9, chan<3,0>, dur<0,120>
+D (20872) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (20872) wifi:perform scan: ss_state=0x9, chan<4,0>, dur<0,120>
+D (20992) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (20992) wifi:perform scan: ss_state=0x9, chan<5,0>, dur<0,120>
+D (21122) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (21122) wifi:perform scan: ss_state=0x9, chan<6,0>, dur<0,120>
+D (21242) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (21242) wifi:perform scan: ss_state=0x9, chan<7,0>, dur<0,120>
+D (21362) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (21362) wifi:perform scan: ss_state=0x9, chan<8,0>, dur<0,120>
+D (21482) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (21482) wifi:perform scan: ss_state=0x9, chan<9,0>, dur<0,120>
+D (21602) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (21602) wifi:perform scan: ss_state=0x9, chan<10,0>, dur<0,120>
+D (21722) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (21722) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<0,120>
+D (21852) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (21852) wifi:perform scan: ss_state=0x9, chan<12,0>, dur<360,360>
+D (22212) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (22212) wifi:perform scan: ss_state=0x9, chan<14,0>, dur<360,360>
+D (22572) wifi:scan end: arg=0x0, status=0, ss_state=0x3
+D (22572) wifi:filter: set rx policy=4
+D (22572) wifi:first chan=1
+D (22572) wifi:handoff_cb: status=0
+D (22572) wifi:clear blacklist
+D (22572) wifi:clear rc list
+D (22582) wifi:clear blacklist
+D (22582) wifi:Send disconnect event, reason=205
+D (22582) wpa: ELOOP: wpa_sm_notify_disassoc:2256 called to remove timer handler=0x42017e7c, removed count=0[0m
+D (22592) wpa: WPA: Clear old PMK and PTK[0m
+D (22602) wpa: ELOOP: wpas_rrm_reset:51 called to remove timer handler=0x4201e93c, removed count=0[0m
+D (22612) wpa: ELOOP: wpas_clear_beacon_rep_data:1166 called to remove timer handler=0x4201f3dc, removed count=0[0m
+D (22622) wpa: ELOOP: wpas_clear_beacon_rep_data:1166 called to remove timer handler=0x4201f3dc, removed count=0[0m
+D (22632) wifi:connect status 1 -> 3
+D (22632) wifi:disable connect timer
+D (22632) wifi:clear scan ap list
+D (22642) event: running post WIFI_EVENT:5 with handler 0x42031fa0 and context 0x3fca9510 on loop 0x3fca835c[0m
+D (22652) esp_netif_handlers: esp_netif action disconnected with netif0x3fca9284 from event_id=5[0m
+D (22662) esp_netif_lwip: check: remote, if=0x3fca9284 fn=0x42013f70[0m
+D (22662) esp_netif_lwip: esp_netif_down_api esp_netif:0x3fca9284[0m
+D (22672) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x3fca9284[0m
+D (22682) esp_netif_lwip: if0x3fca9284 start ip lost tmr: already started[0m
+D (22682) esp_netif_lwip: check: local, if=0x3fca9284 fn=0x420142b8[0m
+D (22692) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x3fca9284[0m
+D (22702) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (22702) event: running post WIFI_EVENT:5 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (22712) wifi:Start wifi connect
+D (22712) wifi:connect status 3 -> 0
+D (22722) wifi:connect chan=0
+D (22722) wifi:first chan=13
+D (22722) wifi:connect status 0 -> 1
+D (22732) wifi:filter: set rx policy=3
+D (22732) wifi:clear scan ap list
+D (22732) wifi:start scan: type=0x50f, priority=2, cb=0x4205b410, arg=0x0, ss_state=0x1, time=22740854, index=0
+D (22742) wifi:perform scan: ss_state=0x9, chan<13,0>, dur<360,360>
+[0;32mI (22752) wifi dpp-enrollee: retry to connect to the AP[0m
+[0;32mI (22752) wifi dpp-enrollee: connect to the AP fail[0m
+D (22912) wifi:rsn valid: gcipher=3 ucipher=3 akm=5 mac=2e:80:88:d8:61:a5
+D (22922) wifi:profile match: ss_state=0x7
+D (22922) wifi:scan end: arg=0x0, status=0, ss_state=0x7
+D (22922) wifi:find first mathched ssid, scan done
+D (22922) wifi:filter: set rx policy=4
+D (22932) wifi:first chan=1
+D (22932) wifi:handoff_cb: status=0
+D (22932) wifi:ap found, mac=2e:80:88:d8:61:a5
+D (22942) wifi:going for connection with bssid=2e:80:88:d8:61:a5
+D (22942) wifi:new_bss=0x3fc9f998, cur_bss=0x0, new_chan=<13,2>, cur_chan=13
+D (22952) wifi:filter: set rx policy=5
+D (22952) wpa: WPA: set AP RSNXE - hexdump(len=0):[0m
+D (22962) wpa:  [NULL][0m
+I (22962) wifi:new:<13,2>, old:<13,0>, ap:<255,255>, sta:<13,2>, prof:1, snd_ch_cfg:0x0
+D (22972) wifi:connect_op: status=0, auth=5, cipher=3 
+D (22972) wifi:auth mode is not none
+D (22982) wifi:connect_bss: auth=1, reconnect=0
+I (22982) wifi:state: init -> auth (0xb0)
+D (22982) wifi:start 1s AUTH timer
+D (22992) wifi:clear scan ap list
+D (22992) event: running post WIFI_EVENT:41 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (23002) wifi:recv auth: seq=2, status=0
+I (23002) wifi:state: auth -> assoc (0x0)
+D (23012) wifi:restart connect 1s timer for assoc
+D (23032) wifi:recv assoc: type=0x10
+D (23032) wifi:filter: set rx policy=6
+I (23032) wifi:state: assoc -> run (0x10)
+D (23032) wifi:start 10s connect timer for 4 way handshake
+D (23032) wpa: WPA: Association event - clear replay counter[0m
+D (23042) wpa: WPA: Clear old PTK[0m
+D (23052) wpa: IEEE 802.1X RX: version=2 type=3 length=95[0m
+D (23052) wpa:   EAPOL-Key type=2[0m
+D (23052) wpa:   key_info 0x8a (ver=2 keyidx=0 rsvd=0 Pairwise Ack)[0m
+D (23062) wpa:   key_length=16 key_data_length=0[0m
+D (23062) wpa:   replay_counter - hexdump(len=8):[0m
+D (23072) wpa: 00 00 00 00 00 00 00 01 [0m
+D (23072) wpa:   key_nonce - hexdump(len=32):[0m
+D (23082) wpa: 3b 2d fb b5 49 b1 01 c3 17 ef 8c bc b4 01 bb c9 [0m
+D (23082) wpa: 3e 0e a7 d8 08 7f 22 13 da ec bb 75 6c 3f 88 82 [0m
+D (23092) wpa:   key_iv - hexdump(len=16):[0m
+D (23092) wpa: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 [0m
+D (23102) wpa:   key_rsc - hexdump(len=8):[0m
+D (23102) wpa: 00 00 00 00 00 00 00 00 [0m
+D (23112) wpa:   key_id (reserved) - hexdump(len=8):[0m
+D (23112) wpa: 00 00 00 00 00 00 00 00 [0m
+D (23112) wpa:   key_mic - hexdump(len=16):[0m
+D (23122) wpa: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 [0m
+D (23122) wpa: WPA 1/4-Way Handshake[0m
+D (23132) wpa: RSN: msg 1/4 key data - hexdump(len=0):[0m
+D (23132) wpa: WPA: Renewed SNonce - hexdump(len=32):[0m
+D (23142) wpa: 9f 83 4f 7c c3 44 70 be ac 44 85 f0 dc 73 b3 43 [0m
+D (23142) wpa: a4 59 da 30 3c a2 f0 5f bd 0e bc 28 85 fa 46 1b [0m
+D (23152) wpa: WPA: PTK derivation - A1=48:27:e2:84:59:18 A2=2e:80:88:d8:61:a5
+[0m
+D (23162) wpa: WPA: PTK - hexdump(len=48):[0m
+D (23162) wpa: d6 e9 b7 d5 48 30 c2 ce 5d f5 e6 78 68 16 3b 13 [0m
+D (23172) wpa: 94 6a a3 be 71 5f 50 29 12 d7 1a c5 a1 db 80 49 [0m
+D (23172) wpa: 61 17 f3 6c 92 45 18 4f b7 b8 fa 80 dc ef e9 8b [0m
+D (23182) wpa: WPA: KCK - hexdump(len=16):[0m
+D (23182) wpa: d6 e9 b7 d5 48 30 c2 ce 5d f5 e6 78 68 16 3b 13 [0m
+D (23192) wpa: WPA: KEK - hexdump(len=16):[0m
+D (23192) wpa: 94 6a a3 be 71 5f 50 29 12 d7 1a c5 a1 db 80 49 [0m
+D (23202) wpa: WPA: TK - hexdump(len=16):[0m
+D (23202) wpa: 61 17 f3 6c 92 45 18 4f b7 b8 fa 80 dc ef e9 8b [0m
+D (23212) wpa: WPA Send EAPOL-Key 2/4[0m
+D (23212) wpa: WPA: KCK - hexdump(len=16):[0m
+D (23222) wpa: d6 e9 b7 d5 48 30 c2 ce 5d f5 e6 78 68 16 3b 13 [0m
+D (23222) wpa: WPA: Derived Key MIC - hexdump(len=16):[0m
+D (23232) wpa: 88 ee aa a3 e6 27 c2 68 fe af 12 01 86 1c 34 5f [0m
+D (23242) wpa: 2/4 txcb, flags=0, txfail 0[0m
+D (23262) wpa: IEEE 802.1X RX: version=2 type=3 length=151[0m
+D (23262) wpa:   EAPOL-Key type=2[0m
+D (23262) wpa:   key_info 0x13ca (ver=2 keyidx=0 rsvd=0 Pairwise Install Ack MIC Secure Encr)[0m
+D (23262) wpa:   key_length=16 key_data_length=56[0m
+D (23272) wpa:   replay_counter - hexdump(len=8):[0m
+D (23272) wpa: 00 00 00 00 00 00 00 02 [0m
+D (23282) wpa:   key_nonce - hexdump(len=32):[0m
+D (23282) wpa: 3b 2d fb b5 49 b1 01 c3 17 ef 8c bc b4 01 bb c9 [0m
+D (23292) wpa: 3e 0e a7 d8 08 7f 22 13 da ec bb 75 6c 3f 88 82 [0m
+D (23292) wpa:   key_iv - hexdump(len=16):[0m
+D (23302) wpa: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 [0m
+D (23302) wpa:   key_rsc - hexdump(len=8):[0m
+D (23312) wpa: 00 00 00 00 00 00 00 00 [0m
+D (23312) wpa:   key_id (reserved) - hexdump(len=8):[0m
+D (23322) wpa: 00 00 00 00 00 00 00 00 [0m
+D (23322) wpa:   key_mic - hexdump(len=16):[0m
+D (23332) wpa: a7 b5 ab 28 82 da 80 43 d3 9e ba e7 7e e3 5c 22 [0m
+D (23332) wpa: RSN: encrypted key data - hexdump(len=56):[0m
+D (23342) wpa: de d6 a6 8a 62 54 4a e2 b6 77 ba 1e 40 74 8e 1e [0m
+D (23342) wpa: 74 eb b1 d7 c3 99 c4 97 05 d1 5a cd ca f0 95 ea [0m
+D (23352) wpa: 2e 92 f2 a6 de f0 70 9c f6 13 4e 3f 7c 9a 5c 25 [0m
+D (23362) wpa: ee 52 67 64 1e fb 6c 9d [0m
+D (23362) wpa: WPA: decrypted EAPOL-Key key data - hexdump(len=48):[0m
+D (23372) wpa: 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 [0m
+D (23372) wpa: 00 0f ac 02 00 00 dd 16 00 0f ac 01 01 00 12 02 [0m
+D (23382) wpa: c5 ac 11 68 62 7d a6 79 55 a6 62 4f a8 bb dd 00 [0m
+D (23382) wpa: WPA 3/4-Way Handshake[0m
+D (23392) wpa: WPA: RSN IE in EAPOL-Key - hexdump(len=22):[0m
+D (23392) wpa: 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 [0m
+D (23402) wpa: 00 0f ac 02 00 00 [0m
+called wpa_parse_generic
+D (23402) wpa: WPA: GTK in EAPOL-Key - hexdump(len=24):[0m
+D (23412) wpa: dd 16 00 0f ac 01 01 00 12 02 c5 ac 11 68 62 7d [0m
+D (23422) wpa: a6 79 55 a6 62 4f a8 bb [0m
+D (23422) wpa: WPA: IE KeyData - hexdump(len=48):[0m
+D (23422) wpa: 30 14 01 00 00 0f ac 04 01 00 00 0f ac 04 01 00 [0m
+D (23432) wpa: 00 0f ac 02 00 00 dd 16 00 0f ac 01 01 00 12 02 [0m
+D (23442) wpa: c5 ac 11 68 62 7d a6 79 55 a6 62 4f a8 bb dd 00 [0m
+D (23442) wpa: WPA: RSC - hexdump(len=8):[0m
+D (23452) wpa: 00 00 00 00 00 00 00 00 [0m
+D (23452) wpa: RSN: received GTK in pairwise handshake - hexdump(len=18):[0m
+D (23462) wpa: 01 00 12 02 c5 ac 11 68 62 7d a6 79 55 a6 62 4f [0m
+D (23462) wpa: a8 bb [0m
+D (23472) wpa: tx 4/4 txcb_flags=8192[0m
+D (23472) wpa: WPA Send EAPOL-Key 4/4[0m
+D (23472) wpa: WPA: KCK - hexdump(len=16):[0m
+D (23482) wpa: d6 e9 b7 d5 48 30 c2 ce 5d f5 e6 78 68 16 3b 13 [0m
+D (23482) wpa: WPA: Derived Key MIC - hexdump(len=16):[0m
+D (23492) wpa: 1f 1c af a8 39 42 30 f1 86 37 c5 28 c9 3c 1c 19 [0m
+D (23502) wpa: WPA: Installing PTK to the driver.[0m
+D (23502) wpa: WPA: Group Key - hexdump(len=16):[0m
+D (23502) wpa: 12 02 c5 ac 11 68 62 7d a6 79 55 a6 62 4f a8 bb [0m
+D (23512) wpa: WPA: Judge GTK: (keyidx=1 len=16).[0m
+D (23512) wpa: WPA: Installing GTK to the driver (keyidx=1 tx=0 len=16).[0m
+D (23522) wpa: WPA: RSC - hexdump(len=6):[0m
+D (23532) wpa: 00 00 00 00 00 00 [0m
+D (23532) wpa: WPA: Key negotiation completed with 2e:80:88:d8:61:a5 [PTK=CCMP GTK=CCMP]
+[0m
+I (23542) wifi:connected with nomlabAP-G, aid = 9, channel 13, 40D, bssid = 2e:80:88:d8:61:a5
+I (23552) wifi:security: WPA2-PSK, phy: bgn, rssi: -60
+D (23552) wifi:remove all except 2e:80:88:d8:61:a5 from rc list
+D (23562) wifi:clear blacklist
+D (23562) nvs: nvs_set sta.chan 1 13[0m
+D (23562) nvs: nvs_set_blob sta.apinfo 700[0m
+D (23572) wifi:filter: set rx policy=7
+I (23572) wifi:pm start, type: 1
+
+I (23572) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000
+D (23582) wifi:Send sta connected event
+D (23582) wifi:connect status 1 -> 5
+D (23592) wifi:obss scan is disabled
+D (23592) wifi:start obss scan: obss scan is stopped
+D (23602) event: running post WIFI_EVENT:4 with handler 0x42031fb8 and context 0x3fca94e0 on loop 0x3fca835c[0m
+D (23612) esp_netif_handlers: esp_netif action connected with netif0x3fca9284 from event_id=4[0m
+D (23612) esp_netif_lwip: check: remote, if=0x3fca9284 fn=0x42013f20[0m
+D (23622) esp_netif_lwip: esp_netif_up_api esp_netif:0x3fca9284[0m
+D (23632) esp_netif_lwip: check: local, if=0x3fca9284 fn=0x420142b8[0m
+D (23632) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x3fca9284[0m
+D (23642) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (23652) esp_netif_lwip: check: remote, if=0x3fca9284 fn=0x42013ddc[0m
+D (23652) esp_netif_lwip: esp_netif_dhcpc_start_api esp_netif:0x3fca9284[0m
+D (23662) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x3fca9284[0m
+D (23672) esp_netif_lwip: if0x3fca9284 start ip lost tmr: already started[0m
+D (23672) esp_netif_lwip: starting dhcp client[0m
+D (23682) wifi:D (23682) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+eb is dhcp or dns sport = 68, dport = 67
+D (23692) event: running post WIFI_EVENT:4 with handler 0x4200b5ac and context 0x3fca95e8 on loop 0x3fca835c[0m
+D (24182) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (25182) wifi:eb is dhcp or dns sport = 68, dport = 67
+I (25182) wifi:<ba-add>idx:0 (ifx:0, 2e:80:88:d8:61:a5), tid:0, ssn:0, winSize:64
+I (25372) wifi:AP's beacon interval = 204800 us, DTIM period = 4
+D (25382) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (25682) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (27182) esp_netif_lwip: esp_netif_internal_dhcpc_cb lwip-netif:0x3fca9308[0m
+D (27182) esp_netif_lwip: if0x3fca9284 ip changed=1[0m
+D (27182) event: running post IP_EVENT:0 with handler 0x42031de4 and context 0x3fca95b4 on loop 0x3fca835c[0m
+D (27192) wifi_init_default: Got IP wifi default handler entered[0m
+D (27192) esp_netif_handlers: esp_netif action got_ip with netif0x3fca9284 from event_id=0[0m
+[0;32mI (27202) esp_netif_handlers: sta ip: 192.168.1.94, mask: 255.255.255.0, gw: 192.168.1.1[0m
+D (27212) event: running post IP_EVENT:0 with handler 0x4200b5ac and context 0x3fca9608 on loop 0x3fca835c[0m
+[0;32mI (27222) wifi dpp-enrollee: got ip:192.168.1.94[0m
+[0;32mI (27232) wifi dpp-enrollee: connected to ap SSID:nomlabAP-G password:tani_nom_11bg[0m
+evt_id= 4
+Event ID: 4
+D (27242) wpa: ELOOP: esp_dpp_task:552 called to remove timer handler=0x42015430, removed count=0[0m
+D (27252) wpa: DPP: Sent event 4 to DPP task[0m
+[0;32mI (27252) main_task: Returned from app_main()[0m

@@ -1,0 +1,18 @@
+Executing action: monitor
+Running cmake in directory /home/fujiwara-e/fujiwara-e/esp/esp-idf/build
+Executing "cmake -G 'Unix Makefiles' -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/home/fujiwara-e/.espressif/python_env/idf5.4_py3.10_env/bin/python -DESP_PLATFORM=1 -DCCACHE_ENABLE=0 /home/fujiwara-e/fujiwara-e/esp/esp-idf"...
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring incomplete, errors occurred!
