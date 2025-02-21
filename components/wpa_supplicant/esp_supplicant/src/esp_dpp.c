@@ -424,7 +424,7 @@ fail:
 static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
 {
     //debug 12/13
-    printf("called esp_dpp_rx_frm()\n");
+    printf("in esp_dpp_rx_frm()--------------------\n");
     uint8_t crypto_suit, type;
     uint8_t *tmp;
     int ret = ESP_OK;
@@ -432,13 +432,12 @@ static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
     tmp = rx_param->action_frm->u.public_action.v.pa_vendor_spec.vendor_data;
     crypto_suit = tmp[0];
     type = tmp[1];
-    printf("hi\n");
     if (crypto_suit != 1) {
         wpa_printf(MSG_ERROR, "DPP: Unsupported crypto suit");
         esp_dpp_call_cb(ESP_SUPP_DPP_FAIL, (void *)ESP_ERR_NOT_SUPPORTED);
         ret = ESP_FAIL;
     } else {
-        printf("type = %d\n", type);
+        printf("[esp_dpp_rx_frm()]: type = %d\n", type);
         switch (type) {
         case DPP_PA_AUTHENTICATION_REQ:
             esp_dpp_rx_auth_req(rx_param, &tmp[2]);
@@ -451,7 +450,8 @@ static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
             break;
         }
     }
-    printf("ret = %d\n",ret);
+    printf("[esp_dpp_rx_frm()] : ret = %d\n",ret);
+    printf("out esp_dpp_rx_frm()--------------------\n");
     return ret;
 }
 
@@ -644,7 +644,7 @@ static void esp_dpp_task(void *pvParameters)
 
 int esp_supp_rx_action(uint8_t *hdr, uint8_t *payload, size_t len, uint8_t channel)
 {
-    printf("called esp_supp_rx_action\n");
+    printf("changed value s_action_rx_cb = esp_supp_rx_action\n");
     struct ieee80211_hdr *rx_hdr = (struct ieee80211_hdr *)hdr;
     struct action_rx_param *rx_param;
     int ret = ESP_ERR_NOT_SUPPORTED;
