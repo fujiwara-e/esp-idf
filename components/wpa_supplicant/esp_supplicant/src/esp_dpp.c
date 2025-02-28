@@ -51,7 +51,7 @@ esp_err_t esp_dpp_post_evt(uint32_t evt_id, uint32_t data)
     }
     evt->id = evt_id;
     evt->data = data;
-    printf("evt_id= %u\n",evt_id);
+    printf("evt_id= %u  evt_data= %u\n", evt_id, data);
     if (s_dpp_api_lock) {
         DPP_API_LOCK();
     } else {
@@ -111,7 +111,7 @@ static void esp_dpp_auth_conf_wait_timeout(void *eloop_ctx, void *timeout_ctx)
 esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint32_t len,
                                     uint8_t channel, uint32_t wait_time_ms)
 {
-    wpa_printf(MSG_DEBUG, "Called esp_dpp_send_action_frame\n");
+    printf("in esp_dpp_send_action_frame() -------------------------------------------\n");
     wifi_action_tx_req_t *req = os_zalloc(sizeof(*req) + len);;
     if (!req) {
         return ESP_FAIL;
@@ -119,12 +119,13 @@ esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint3
 
     req->ifx = WIFI_IF_STA;
     memcpy(req->dest_mac, dest_mac, ETH_ALEN);
-    req->no_ack = false;
+    // ack を受け付けないように設定
+    req->no_ack = true;
     req->data_len = len;
     req->rx_cb = s_action_rx_cb;
     memcpy(req->data, buf, req->data_len);
 
-    printf("DPP: Mgmt Tx - MAC:" MACSTR ", Channel-%d, WaitT-%d",
+    printf("DPP: Mgmt Tx - MAC:" MACSTR ", Channel-%d, WaitT-%d\n",
                MAC2STR(dest_mac), channel, wait_time_ms);
 
     //wpa_printf(MSG_DEBUG, "DPP: Mgmt Tx - MAC:" MACSTR ", Channel-%d, WaitT-%d",
@@ -132,6 +133,7 @@ esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint3
 
     if (ESP_OK != esp_wifi_action_tx_req(WIFI_OFFCHAN_TX_REQ, channel,
                                          wait_time_ms, req)) {
+        printf("DPP: Failed to perform offchannel operation\n");
         wpa_printf(MSG_ERROR, "DPP: Failed to perform offchannel operation");
         esp_dpp_call_cb(ESP_SUPP_DPP_FAIL, (void *)ESP_ERR_DPP_TX_FAILURE);
         os_free(req);
@@ -139,6 +141,7 @@ esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint3
     }
 
     os_free(req);
+    printf("out esp_dpp_send_action_frame() -------------------------------------------\n");
     return ESP_OK;
 }
 
@@ -424,7 +427,7 @@ fail:
 static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
 {
     //debug 12/13
-    printf("in esp_dpp_rx_frm()--------------------\n");
+    printf("in esp_dpp_rx_frm()--------------------------------\n");
     uint8_t crypto_suit, type;
     uint8_t *tmp;
     int ret = ESP_OK;
@@ -440,18 +443,21 @@ static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
         printf("[esp_dpp_rx_frm()]: type = %d\n", type);
         switch (type) {
         case DPP_PA_AUTHENTICATION_REQ:
+        printf("[esp_dpp_rx_frm()]: case = DPP_PA_AUTHENTICATION_REQ\n");
             esp_dpp_rx_auth_req(rx_param, &tmp[2]);
             break;
         case DPP_PA_AUTHENTICATION_CONF:
+        printf("[esp_dpp_rx_frm()]: case = DPP_PA_AUTHENTICATION_CONF\n");
             esp_dpp_rx_auth_conf(rx_param, &tmp[2]);
             break;
         case DPP_PA_PEER_DISCOVERY_RESP:
+        printf("[esp_dpp_rx_frm()]: case = DPP_PA_PEER_DISCOVERY_RESP\n");
             ret = esp_dpp_rx_peer_disc_resp(rx_param);
             break;
         }
     }
     printf("[esp_dpp_rx_frm()] : ret = %d\n",ret);
-    printf("out esp_dpp_rx_frm()--------------------\n");
+    printf("out esp_dpp_rx_frm()--------------------------------\n");
     return ret;
 }
 
@@ -484,7 +490,7 @@ fail:
 
 static esp_err_t esp_dpp_rx_action(struct action_rx_param *rx_param)
 {
-
+    printf("in esp_dpp_rx_action() ------------------------------------------\n");
     int ret = ESP_OK;
 
     if (!rx_param) {
@@ -495,7 +501,7 @@ static esp_err_t esp_dpp_rx_action(struct action_rx_param *rx_param)
         struct ieee80211_public_action *public_action =
                 &rx_param->action_frm->u.public_action;
 
-        wpa_printf(MSG_DEBUG, "DPP: Rx Public Action frame: action - %d",
+        printf("DPP: Rx Public Action frame: action - %d\n",
                    public_action->action);
 
         if (public_action->action == WLAN_PA_VENDOR_SPECIFIC &&
@@ -507,10 +513,8 @@ static esp_err_t esp_dpp_rx_action(struct action_rx_param *rx_param)
                                                  (u8 *)rx_param->action_frm);
 
             if (s_dpp_listen_in_progress) {
-                printf("dpp listen is inprogress\n");
                 esp_supp_dpp_stop_listen();
             }
-            printf("dpp listen is end\n");
             ret = esp_dpp_rx_frm(rx_param);
         } else if (public_action->action == WLAN_PA_GAS_INITIAL_RESP &&
                    public_action->v.pa_gas_resp.type == WLAN_EID_ADV_PROTO &&
@@ -528,6 +532,7 @@ static esp_err_t esp_dpp_rx_action(struct action_rx_param *rx_param)
 
     os_free(rx_param->action_frm);
     os_free(rx_param);
+    printf("out esp_dpp_rx_action() ------------------------------------------\n");
     return ret;
 }
 
@@ -537,6 +542,7 @@ static void esp_dpp_task(void *pvParameters)
     bool task_del = false;
 
     for (;;) {
+        printf("start esp_dpp_task for loop () ---------------------------------------------------\n");
         if (os_queue_recv(s_dpp_evt_queue, &evt, OS_BLOCK) == TRUE) {
             //debug: 12/13
             printf("Event ID: %d\n",evt->id);
@@ -628,6 +634,7 @@ static void esp_dpp_task(void *pvParameters)
                 break;
             }
         }
+        printf("end esp_dpp_task for loop () ---------------------------------------------------\n");
     }
 
     os_queue_delete(s_dpp_evt_queue);
@@ -681,12 +688,15 @@ int esp_supp_rx_action(uint8_t *hdr, uint8_t *payload, size_t len, uint8_t chann
 static void offchan_event_handler(void *arg, esp_event_base_t event_base,
                                   int32_t event_id, void *event_data)
 {
+    printf("in offchan_event_handler ------------------------------\n");
     if (event_id == WIFI_EVENT_ACTION_TX_STATUS) {
         wifi_event_action_tx_status_t *evt =
             (wifi_event_action_tx_status_t *)event_data;
         wpa_printf(MSG_DEBUG, "Mgmt Tx Status - %d, Cookie - 0x%x",
                    evt->status, (uint32_t)evt->context);
 
+
+        /* ここで，evt->status があるとエラーがおこる */
         if (evt->status) {
             eloop_cancel_timeout(esp_dpp_auth_conf_wait_timeout, NULL, NULL);
             if (s_dpp_listen_in_progress) {
@@ -697,12 +707,14 @@ static void offchan_event_handler(void *arg, esp_event_base_t event_base,
         }
 
     } else if (event_id == WIFI_EVENT_ROC_DONE) {
+        printf("event_id == WIFI_EVENT_ROC_DONE\n");
         wifi_event_roc_done_t *evt = (wifi_event_roc_done_t *)event_data;
 
         if (s_dpp_listen_in_progress && evt->context == (uint32_t)s_action_rx_cb) {
             esp_dpp_post_evt(SIG_DPP_LISTEN_NEXT_CHANNEL, 0);
         }
     }
+    printf("end offchan_event_handler ------------------------------\n");
 }
 
 static char *esp_dpp_parse_chan_list(const char *chan_list)
