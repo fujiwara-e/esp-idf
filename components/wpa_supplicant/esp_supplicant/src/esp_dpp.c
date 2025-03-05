@@ -149,7 +149,7 @@ esp_err_t esp_dpp_send_action_frame(uint8_t *dest_mac, const uint8_t *buf, uint3
 static void esp_dpp_rx_auth_req(struct action_rx_param *rx_param, uint8_t *dpp_data)
 {
     int64_t dpp_rx_auth_req =esp_timer_get_time();
-    printf("DPP_Authentication_Request Time : %lld\n", dpp_rx_auth_req);
+    printf("[TIME STAMP] DPP_Authentication_Request Time : %lld\n", dpp_rx_auth_req);
     size_t len = rx_param->vendor_data_len - 2;
     const u8 *r_bootstrap, *i_bootstrap;
     u16 r_bootstrap_len, i_bootstrap_len;
@@ -193,9 +193,13 @@ static void esp_dpp_rx_auth_req(struct action_rx_param *rx_param, uint8_t *dpp_d
                                          (const u8 *)&rx_param->action_frm->u.public_action.v, dpp_data, len);
     os_memcpy(s_dpp_ctx.dpp_auth->peer_mac_addr, rx_param->sa, ETH_ALEN);
 
+    int64_t dpp_tx_auth_res_start =esp_timer_get_time();
+    printf("[TIME STAMP] DPP_Authentication_Response Time [Before send] : %lld\n", dpp_tx_auth_res_start);
     esp_dpp_send_action_frame(rx_param->sa, wpabuf_head(s_dpp_ctx.dpp_auth->resp_msg),
                               wpabuf_len(s_dpp_ctx.dpp_auth->resp_msg),
                               rx_param->channel, OFFCHAN_TX_WAIT_TIME);
+    int64_t dpp_tx_auth_res_end =esp_timer_get_time();
+    printf("[TIME STAMP] DPP_Authentication_Response Time [After send] : %lld\n", dpp_tx_auth_res_end);
     eloop_cancel_timeout(esp_dpp_auth_conf_wait_timeout, NULL, NULL);
     eloop_register_timeout(ESP_DPP_AUTH_TIMEOUT_SECS, 0, esp_dpp_auth_conf_wait_timeout, NULL, NULL);
 
@@ -206,6 +210,8 @@ fail:
 
 static void gas_query_req_tx(struct dpp_authentication *auth)
 {
+    int64_t dpp_tx_config_req =esp_timer_get_time();
+    printf("[TIME STAMP] DPP_Configuration_Request Time : %lld\n", dpp_tx_config_req);
     struct wpabuf *buf;
     int supp_op_classes[] = {81, 0};
 
@@ -262,6 +268,8 @@ static int esp_dpp_handle_config_obj(struct dpp_authentication *auth,
 
 static void esp_dpp_rx_auth_conf(struct action_rx_param *rx_param, uint8_t *dpp_data)
 {
+    int64_t dpp_rx_auth_conf =esp_timer_get_time();
+    printf("[TIME STAMP] DPP_Authentication_Confirm Time : %lld\n", dpp_rx_auth_conf);
     struct dpp_authentication *auth = s_dpp_ctx.dpp_auth;
     struct ieee80211_public_action *public_action =
             &rx_param->action_frm->u.public_action;
@@ -289,7 +297,7 @@ static void esp_dpp_rx_auth_conf(struct action_rx_param *rx_param, uint8_t *dpp_
 
     eloop_cancel_timeout(esp_dpp_auth_conf_wait_timeout, NULL, NULL);
 
-    printf("esp_dpp.c: Called dpp_auth_conf_rx\n");
+    //printf("esp_dpp.c: Called dpp_auth_conf_rx\n");
     if (dpp_auth_conf_rx(auth, (const u8 *)&public_action->v,
                          dpp_data, len) < 0) {
         wpa_printf(MSG_DEBUG, "DPP: Authentication failed");
@@ -451,7 +459,7 @@ static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
         case DPP_PA_AUTHENTICATION_CONF:
         printf("[esp_dpp_rx_frm()]: case = DPP_PA_AUTHENTICATION_CONF\n");
             esp_dpp_rx_auth_conf(rx_param, &tmp[2]);
-            os_sleep(0,300*1000);
+            os_sleep(0,500*1000);
             break;
         case DPP_PA_PEER_DISCOVERY_RESP:
         printf("[esp_dpp_rx_frm()]: case = DPP_PA_PEER_DISCOVERY_RESP\n");
@@ -466,7 +474,8 @@ static esp_err_t esp_dpp_rx_frm(struct action_rx_param *rx_param)
 
 static void gas_query_resp_rx(struct action_rx_param *rx_param)
 {
-    printf("in gas_query_resp_rx ------------------------------\n");
+    int64_t dpp_rx_conf_res =esp_timer_get_time();
+    printf("[TIME STAMP] DPP_Configuration_Response Time : %lld\n", dpp_rx_conf_res);
     struct dpp_authentication *auth = s_dpp_ctx.dpp_auth;
     uint8_t *pos = rx_param->action_frm->u.public_action.v.pa_gas_resp.data;
     uint8_t *resp = &pos[10];
@@ -500,13 +509,15 @@ static esp_err_t esp_dpp_rx_action(struct action_rx_param *rx_param)
     if (!rx_param) {
         return ESP_ERR_INVALID_ARG;
     }
+    // もし，Action Frame で DPP の形式なら，esp_dpp_rx_frm 
+    // GAS 形式 (DPP Configuration Response の時) なら，gas_query_resp_rx を呼び出す
 
     if (rx_param->action_frm->category == WLAN_ACTION_PUBLIC) {
         struct ieee80211_public_action *public_action =
                 &rx_param->action_frm->u.public_action;
 
-        printf("DPP: Rx Public Action frame: action - %d\n",
-                   public_action->action);
+        //printf("DPP: Rx Public Action frame: action - %d\n",
+        //           public_action->action);
 
         if (public_action->action == WLAN_PA_VENDOR_SPECIFIC &&
                 WPA_GET_BE24(public_action->v.pa_vendor_spec.oui) == OUI_WFA &&
@@ -549,7 +560,7 @@ static void esp_dpp_task(void *pvParameters)
         //printf("start esp_dpp_task for loop () ---------------------------------------------------\n");
         if (os_queue_recv(s_dpp_evt_queue, &evt, OS_BLOCK) == TRUE) {
             //debug: 12/13
-            printf("Event ID: %d\n",evt->id);
+            //printf("Event ID: %d\n",evt->id);
 
             if (evt->id >= SIG_DPP_MAX) {
                 os_free(evt);
@@ -711,7 +722,7 @@ static void offchan_event_handler(void *arg, esp_event_base_t event_base,
         }
 
     } else if (event_id == WIFI_EVENT_ROC_DONE) {
-        printf("event_id == WIFI_EVENT_ROC_DONE\n");
+        //printf("event_id == WIFI_EVENT_ROC_DONE\n");
         wifi_event_roc_done_t *evt = (wifi_event_roc_done_t *)event_data;
 
         if (s_dpp_listen_in_progress && evt->context == (uint32_t)s_action_rx_cb) {
